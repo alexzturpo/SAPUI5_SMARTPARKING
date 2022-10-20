@@ -1,0 +1,47 @@
+{
+    "welcomeFile": "/index.html",
+    "logout": {
+       "logoutEndpoint": "/logout",
+       "logoutPage": "/logout.html"
+    },
+    "authenticationMethod": "route", 
+    "routes": [
+      {
+        "source": "^/logout.html$",
+        "target": "/logout.html",
+        "service": "html5-apps-repo-rt",
+        "authenticationType": "none"
+      },
+      {
+          "source": "^/index.html$",
+          "target": "/index.html",
+          "service": "html5-apps-repo-rt",
+          "authenticationType": "xsuaa",
+          "cacheControl": "no-cache, no-store, must-revalidate"
+      },
+      {
+        "authenticationType": "xsuaa",
+        "csrfProtection": true,
+        "source": "^/sap/bc/",
+        "destination": "DEV_PROLAN_PUBLIC"
+      },
+      {
+        "source": "^/resources/(.*)$",
+        "target": "/resources/$1",
+        "authenticationType": "none",
+        "destination": "ui5"
+      },
+      {
+        "source": "^/test-resources/(.*)$",
+        "target": "/test-resources/$1",
+        "authenticationType": "none",
+        "destination": "ui5"
+      },
+      {
+        "source": "^(.*)$",
+        "target": "$1",
+        "service": "html5-apps-repo-rt",
+        "authenticationType": "xsuaa"
+      }
+    ]
+  }

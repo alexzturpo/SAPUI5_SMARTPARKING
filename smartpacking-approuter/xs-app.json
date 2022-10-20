@@ -1,0 +1,32 @@
+
+{
+    "welcomeFile": "/index.html",
+    "authenticationMethod": "route",
+    "routes": [
+      {
+        "source": "^/resources/(.*)$",
+        "target": "/spsmartpacking/resources/$1",
+        "authenticationType": "none",
+        "destination": "ui5"
+      },
+      {
+        "source": "^/test-resources/(.*)$",
+        "target": "/spsmartpacking/test-resources/$1",
+        "authenticationType": "none",
+        "destination": "ui5"
+      },
+      {
+        "source": "^(.*)$",
+        "target": "/spsmartpacking/$1",
+        "service": "html5-apps-repo-rt",
+        "authenticationType": "xsuaa"
+      },
+      {
+            "authenticationType": "xsuaa",
+            "csrfProtection": true,
+            "source": "^/sap/bc/",
+            "destination": "DEV_PROLAN"
+        }
+    ]
+  }
+  

@@ -1,0 +1,225 @@
+{
+  "_version": "1.40.0",
+  "sap.app": {
+    "id": "sp.smartpacking",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap-ux/fiori-freestyle-writer:basic",
+      "version": "0.11.13",
+      "toolsId": "0b392727-6af7-413d-90a0-b9f2af8fcd22"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "bc": {
+        "uri": "/sap/bc/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0",
+          "localUri": "localService/metadata.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.101.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sp.smartpacking.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "sp.smartpacking.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RoutevMain",
+          "pattern": "RoutevMain",
+          "target": [
+            "TargetvMain"
+          ]
+        },
+        {
+            "name": "RouteApp",
+            "pattern": "RouteApp",
+            "target":  "TargetApp"
+          },
+          {
+            "name": "vRFQ",
+            "pattern": "vRFQ",
+            "target":  "Target_vRFQ"
+          },
+          {
+            "name": "vProveedorRFQ",
+            "pattern": "vProveedorRFQ",
+            "target":  "Target_vProveedorRFQ"
+          },
+          {
+            "name": "vAplicarCotizacion",
+            "pattern": "vAplicarCotizacion",
+            "target":  "Target_vAplicarCotizacion"
+          },
+          {
+            "name": "vAplicarCotizacion",
+            "pattern": "vAplicarCotizacion",
+            "target":  "Target_vCompararCotizacion"
+          },
+          {
+            "name": "vAdministrarC",
+            "pattern": "vAdministrarC",
+            "target":  "Target_vAdministrarC"
+          },
+          {
+            "name": "v4CotizacionInfo",
+            "pattern": "v4CotizacionInfo",
+            "target":  "Target_v4CotizacionInfo"
+          },
+          {
+            "name": "v4ACrearOrden",
+            "pattern": "v4ACrearOrden",
+            "target":  "Target_v4ACrearOrden"
+          }
+      ],
+      "targets": {
+        "TargetvMain": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vMain",
+          "viewName": "vMain"
+        },
+        "TargetApp": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "AppBack",
+            "viewName": "App"
+          },
+          "Target_vRFQ": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "vRFQ",
+            "viewName": "vRFQ"
+          },
+          "Target_vProveedorRFQ": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "vProveedorRFQ",
+            "viewName": "vProveedorRFQ"
+          },
+          "Target_vAplicarCotizacion": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "vAplicarCotizacion",
+            "viewName": "vAplicarCotizacion"
+          },
+          "Target_vCompararCotizacion": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "vCompararCotizacion",
+            "viewName": "vCompararCotizacion"
+          },
+          "Target_vAdministrarC": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "vAdministrarC",
+            "viewName": "vAdministrarC"
+          },
+          "Target_v4CotizacionInfo": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "v4CotizacionInfo",
+            "viewName": "v4CotizacionInfo"
+          },
+          "Target_v4ACrearOrden": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "v4ACrearOrden",
+            "viewName": "v4ACrearOrden"
+          }
+      }
+    },
+    "rootView": {
+      "viewName": "sp.smartpacking.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

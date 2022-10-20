@@ -1,0 +1,52 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+   xmlns:mvc="sap.ui.core.mvc"  
+   xmlns:f="sap.ui.layout.form"
+   xmlns:l="sap.ui.layout"  
+   xmlns:cards="sap.f.cards"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"   
+    xmlns:tab="sap.ui.table" 
+    xmlns:uxap="sap.uxap"
+   >
+   <Dialog id="dialog_registro_volcado" contentWidth="60rem" title="Registro de Volcado" draggable="true" showHeader="true">  
+      <f:Form id="from_registro_volcado" editable="true">
+                                            <f:layout>
+                                                <f:ColumnLayout id="form_column_layout_registro_volcado" columnsM="2" columnsL="3" columnsXL="4" /> 
+                                            </f:layout>
+                                            <f:formContainers>
+                                                <f:FormContainer  id="form_containter_registro_volcado" title="Datos de Volcado">
+                                                    <f:formElements>
+                                                        <f:FormElement id="form_element_registro_volcado_turno" label="Turno">
+                                                            <f:fields>
+                                                                <ComboBox id="cmb_registro_volcado_turno"  selectedKey="001">
+                                                                    <items>
+                                                                        <core:Item id="item_volcado_turno_1"  key="001" text="D"/>
+                                                                        <core:Item id="item_volcado_turno_2"  key="002" text="A"/>
+                                                                        <core:Item id="item_volcado_turno_3"  key="003" text="B"/>
+                                                                    </items>
+                                                                </ComboBox> 
+                                                            </f:fields>
+                                                        </f:FormElement>
+                                                        <f:FormElement  id="form_element_registro_volcado_fecha" label="Fecha">
+                                                            <f:fields>
+                                                                <DatePicker id="datepicker_registro_volcado_fecha" value="" valueFormat="dd/MM/yyyy" displayFormat="dd/MM/yyyy"/>
+                                                            </f:fields>
+                                                        </f:FormElement>
+                                                        <f:FormElement  id="form_element_registro_volcado_hora" label="Hora">
+                                                            <f:fields>
+                                                                <TimePicker id="timepicker_registro_volcado_hora" value="" valueFormat="HH:mm" displayFormat="HH:mm" />
+                                                            </f:fields>
+                                                        </f:FormElement> 
+                                                    </f:formElements>
+                                                </f:FormContainer> 
+                                            </f:formContainers>
+                                        </f:Form>
+    <OverflowToolbar id="d2Footer">
+        <ToolbarSpacer id="Aidespacio"/>
+        <Button text="Agregar" id="btn_agregar_volcado" icon="sap-icon://add" press="btnOpenVolcado" type="Emphasized"/>
+        <Button text="Cancelar" id="btn_cancelar_volcado" icon="sap-icon://cancel" press="onCancelarVolcado" type="Emphasized"/>
+    </OverflowToolbar>
+   </Dialog>
+</core:FragmentDefinition>

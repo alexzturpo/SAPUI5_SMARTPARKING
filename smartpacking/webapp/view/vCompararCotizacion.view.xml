@@ -1,0 +1,251 @@
+<mvc:View controllerName="sp.smartpacking.controller.vCompararCotizacion"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"   
+    xmlns:core="sap.ui.core"  
+    xmlns:tab="sap.ui.table" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
+    xmlns:fb="sap.ui.comp.filterbar"
+    >
+    <Page id="page" title="Criterios" showHeader="false" showNavButton="true"  navButtonPress=".onApp" >
+        <content> 
+            <tnt:ToolHeader id="th1">  
+                <!-- <Button id="idNavMenu2" icon="sap-icon://nav-back" press="onApp"/>   -->
+                <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png" />
+                <ToolbarSpacer id="space1"/>  
+                    <Title id="tituloid3" level="H3" text="SMARTPACKING" /> 
+                <ToolbarSpacer id="space2"/>  
+                <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
+            </tnt:ToolHeader>
+            <Page id="pageCabecera001" titleLevel="H2"  class="altura"
+                title="" navButtonPress=".onApp" showNavButton="true" >
+                <headerContent> 
+                    <!-- <HBox id="vccId001">
+                        <Label id="vmainId013" class="sapUiMediumMargin"  textAlign="Center" wrapping ="true"  text="RFQ: " />
+                        <Input  id="vccIdRFQ01" value="70000823" placeholder="Ingrese RFQ" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                    </HBox>  -->
+                    <!-- <Button id="btn" text="Comleto" press="onAppRealcionadas"/>    -->
+                </headerContent> 
+                <uxap:ObjectPageLayout id="conOpl" upperCaseAnchorBar="false">
+                    <uxap:headerTitle>
+                        <uxap:ObjectPageHeader id="conOp" 
+                                        objectTitle="REGISTRO DE MATERIAL SEMIELABORADO - CALIBRADO"
+                                        objectSubtitle="Resumen"  >
+                            <!-- <uxap:actions>
+                                <uxap:ObjectPageHeaderActionButton icon="sap-icon://edit" text="Editar" importance="Medium" tooltip="Editar"/>
+                                <uxap:ObjectPageHeaderActionButton icon="sap-icon://save" text="Publicar" tooltip="save" press="onPublicar"/> 
+                                <uxap:ObjectPageHeaderActionButton icon="sap-icon://action" text="action" importance="Low" tooltip="action" press="on01"/> 
+                            </uxap:actions>  -->
+                        </uxap:ObjectPageHeader>
+                    </uxap:headerTitle>
+                    <uxap:headerContent>
+                        <!-- <layout:VerticalLayout id="conVl01" >
+                            <Title id="ID1" level="H3" text="LOTE MP:" />
+                            <Label id="ID11" text="1234123"/>
+                            <Title id="ID2" level="H3" text="CULTIVO:" />
+                            <Label id="ID12" text="Espárrago"/>
+                            <Title id="ID3" level="H3" text="PROVEEDOR:" />
+                            <Label id="ID13" text="Proveedor 1"/>
+                        </layout:VerticalLayout>
+                        <layout:VerticalLayout id="conVl02" >
+                            <Title id="conVl02t1" level="H3" text="VARIEDAD:" />
+                            <Label id="conVl02l1" text="Variedad 1"/>
+                            <Title id="conVl02t2" level="H3" text="LÍNEA DE PRD:" />
+                            <Label id="conVl02l2" text="Producción 1"/>
+                        </layout:VerticalLayout>
+                        <layout:VerticalLayout id="conVl03" >
+                            <Title id="ID4" level="H3" text="ALMACÉN:" />
+                            <Label id="ID14" text="1234123"/>
+                            <Title id="ID5" level="H3" text="REG. SANIDAD:" />
+                            <Label id="ID15" text="Sanidad 123"/>
+                        </layout:VerticalLayout> -->
+                        <layout:VerticalLayout id="vmainId005" class="sapUiMediumMarginEnd" width="100%">
+                        <fb:FilterBar id="Fb01Id001" reset="onReset" search="onSearch" showRestoreButton="true" >
+                        <fb:filterGroupItems>
+                            <fb:FilterGroupItem id="Fbi01I123" groupName="G1" name="A3" label="Fecha de Producción"   partOfCurrentVariant="true" visibleInFilterBar="true">
+                                <fb:control>
+                                    <DatePicker placeholder="Ingrese"/> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem id="Fbi01Id003" groupName="G1" groupTitle="Group1" name="A1" label="Material Calibrado" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input id="Fbi01Id003i" value="70000823" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem id="Fbi01Id002" groupName="G0" name="B" label="Cantidad"   partOfCurrentVariant="true" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input  id="Fbi01Id002i" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                </fb:control>
+                            </fb:FilterGroupItem>                            
+                            <fb:FilterGroupItem  id="Fbi01Id007" groupName="G2" groupTitle="Group2" name="B2" label="Lote Prod." visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input  id="Fbi01Id007i" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem  id="Fbi01Id005" groupName="G2" groupTitle="Group2" name="C2" label="Variedad" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox  id="Fbi01Id005i" selectedKey="001">
+                                        <items>
+                                            <core:Item  id="Fbi01Id005k1" key="001" text="Seleecione"/>
+                                            <core:Item  id="Fbi01Id005k2" key="002" text="valor 1"/>
+                                            <core:Item  id="Fbi01Id005k3" key="003" text="valor 2"/>
+                                        </items>
+                                    </ComboBox> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem  id="Fbi01Id011" groupName="G2" groupTitle="Group2" name="D2" label="Cliente" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox  id="Fbi01Id011i" selectedKey="001">
+                                        <items>
+                                            <core:Item  id="Fbi01Id011k1" key="001" text="Seleecione"/>
+                                            <core:Item  id="Fbi01Id011k2" key="002" text="Cliente 1"/>
+                                            <core:Item  id="Fbi01Id011k3" key="003" text="Cliente 2"/>
+                                        </items>
+                                    </ComboBox> 
+                                </fb:control>
+                            </fb:FilterGroupItem> 
+                            <fb:FilterGroupItem  id="Fbi01Id008" groupName="G2" groupTitle="Group2" name="E2" label="Cultivo" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input  id="Fbi01Id008i" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem  id="Fbi01Id009" groupName="G2" groupTitle="Group2" name="F2" label="Línea de PRD" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox id="Fbi01Id001i"  selectedKey="001">
+                                        <items>
+                                            <core:Item id="Fbi01Id001ik1"  key="001" text="All"/>
+                                            <core:Item id="Fbi01Id001ik2"  key="002" text="Línea 1"/>
+                                            <core:Item id="Fbi01Id001ik3"  key="003" text="Línea 2"/>
+                                        </items>
+                                    </ComboBox>
+                                </fb:control>
+                            </fb:FilterGroupItem>                           
+                            <fb:FilterGroupItem  id="Fbi01Id010" groupName="G2" groupTitle="Group2" name="G2" label="Reg. de Sanidad" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input  id="Fbi01Id010i" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+                    </fb:FilterBar>
+                </layout:VerticalLayout>
+                    </uxap:headerContent> 
+                    <uxap:sections>
+                        <uxap:ObjectPageSection id="Op01" titleUppercase="false" title="2" showTitle="false">
+                            <uxap:subSections>
+                                <uxap:ObjectPageSubSection id="Op02" titleUppercase="false">
+                                    <uxap:blocks> 
+                                        <!-- <tab:Table id="table01comparar"
+                                            showNoData="true"
+                                            selectionMode="Single"
+                                            selectionBehavior="RowOnly"
+                                            visibleRowCount="7"
+                                            enableSelectAll="false" 
+                                            rows="{  path: 'myParam>/tbl_T_VISTA_MOVI' }" 
+                                            ariaLabelledBy="title" 
+                                            cellClick="rowSelectionChangeMovimiento">
+                                            <tab:extension>
+                                                <OverflowToolbar id="tab01Id006" style="Clear">
+                                                    <Title id="title" text="Cotizaciones "/>
+                                                    <ToolbarSpacer id="tab01Id007" /> 
+                                                    <Button id="tab01Id0011" icon="sap-icon://compare" text="Comparar" tooltip="Visualizar Compararción" press="onCompararC"/>  
+                                                    <Button id="tab01Id0012" icon="sap-icon://competitor" text="Conceder" tooltip="Conceder cotización" press="onPremiar"/>  
+                                                </OverflowToolbar>
+                                            </tab:extension>
+                                            <tab:columns>
+                                                <tab:Column id="table01Id001" sortProperty="DOC_MOVIMIENTO" filterProperty="DOC_MOVIMIENTO" autoResizable="true" width="auto">
+                                                    <Label id="table01Id001l" textAlign="Center" wrapping ="true"  text="Cita de proveedor" />
+                                                    <tab:template>  <Text id="table01Id001li" text="{myParam>DOC_MOVIMIENTO}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id002" sortProperty="GJAHR" filterProperty="GJAHR" autoResizable="true" width="auto">
+                                                    <Label id="table01Id002l" textAlign="Center" wrapping ="true"  text="Proveedor" />
+                                                    <tab:template> <Text id="table01Id002i" text="{myParam>GJAHR}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id003" sortProperty="FECHA_MOVIMIENTO" filterProperty="FECHA_MOVIMIENTO" autoResizable="true" width="auto">
+                                                    <Label id="table01Id003l" textAlign="Center" wrapping ="true"  text="Dirección" />
+                                                    <tab:template>  <Text id="table01Id003i" text="{myParam>FECHA_MOVIMIENTO}"  wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id004" sortProperty="ANLN1" filterProperty="ANLN1" autoResizable="true" width="auto">
+                                                    <Label id="table01Id004l" textAlign="Center" wrapping ="true"  text="Estado" />
+                                                    <tab:template>  <Text id="table01Id004i" text="{myParam>ANLN1}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id005" sortProperty="ANLN2" filterProperty="ANLN2" autoResizable="true" width="auto">
+                                                    <Label id="table01Id005l" textAlign="Center" wrapping ="true"  text="Valor neto de cotización total" />
+                                                    <tab:template> <Input id="table01Id005i" value="{myParam>ANLN2}"  /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id006" sortProperty="TXT50" filterProperty="TXT50" autoResizable="true" width="auto">
+                                                    <Label id="table01Id006l" textAlign="Center" wrapping ="true"  text="Fecha de cotización" />
+                                                    <tab:template> <Text id="table01Id006i" text="{myParam>TXT50}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id007" sortProperty="DESCRIPCION_SOCIEDAD" filterProperty="DESCRIPCION_SOCIEDAD" autoResizable="true" width="auto">
+                                                    <Label id="table01Id007l" textAlign="Center" wrapping ="true"  text="Artículos totalmente citados" />
+                                                    <tab:template> <Text id="table01Id007i" text="{myParam>BUKRS}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="table01Id008" sortProperty="DESCRIPCION_SOCIEDAD" filterProperty="DESCRIPCION_SOCIEDAD" autoResizable="true" width="auto">
+                                                    <Label id="table01Id008l" textAlign="Center" wrapping ="true"  text="Artículos de mejor precio" />
+                                                    <tab:template> <Text id="table01Id008i" text="{myParam>BUKRS}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                            </tab:columns>
+                                        </tab:Table> -->
+                                        <VBox class="sapUiSmallMargin">
+                                                <f:Form id="FormChange480_12120Dual"
+                                                    editable="true">
+                                                    <f:title>
+                                                        <core:Title text="Nuevo Registro" />
+                                                    </f:title>
+                                                    <f:layout>
+                                                        <f:ResponsiveGridLayout
+                                                            labelSpanXL="4"
+                                                            labelSpanL="4"
+                                                            labelSpanM="12"
+                                                            labelSpanS="12"
+                                                            adjustLabelSpan="false"
+                                                            emptySpanXL="0"
+                                                            emptySpanL="0"
+                                                            emptySpanM="0"
+                                                            emptySpanS="0"
+                                                            columnsXL="2"
+                                                            columnsL="2"
+                                                            columnsM="2"
+                                                            singleContainerFullSize="false" />
+                                                    </f:layout>
+                                                    <f:formContainers>
+                                                        <f:FormContainer>
+                                                            <f:formElements>
+                                                                <f:FormElement label="Cantidad">
+                                                                    <f:fields>
+                                                                        <Input value="{SupplierName}" id="name"/>
+                                                                    </f:fields>
+                                                                </f:FormElement>
+                                                            </f:formElements>
+                                                        </f:FormContainer>
+                                                        <f:FormContainer>
+                                                            <f:formElements>
+                                                                <f:FormElement label="Fecha de Produccón">
+                                                                    <f:fields>
+                                                                        <DatePicker id="DP1" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
+                                                                    </f:fields>
+                                                                </f:FormElement>
+                                                            </f:formElements>
+                                                        </f:FormContainer>
+                                                    </f:formContainers>
+                                                </f:Form>
+                                                <Bar>
+                                            <contentRight>
+                                                <Button id="tab02Id0011" icon="sap-icon://save" text="Guardar" tooltip="Guardar" press="onCompararC"/>  
+                                                <Button id="tab02Id0012" icon="sap-icon://cancel" text="Cancelar" tooltip="Cancelar" press="onPremiar"/>
+                                            </contentRight>
+                                                </Bar>
+                                        </VBox>  
+                                    </uxap:blocks>
+                                </uxap:ObjectPageSubSection>
+                            </uxap:subSections>
+                        </uxap:ObjectPageSection>
+                    </uxap:sections> 
+                </uxap:ObjectPageLayout>
+            </Page>  
+        </content>
+    </Page>
+</mvc:View>

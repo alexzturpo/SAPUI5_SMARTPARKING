@@ -1,0 +1,88 @@
+<mvc:View controllerName="sp.smartpacking.controller.vAplicarCotizacion"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"   
+    xmlns:core="sap.ui.core"  
+    xmlns:tab="sap.ui.table" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
+    xmlns:fb="sap.ui.comp.filterbar"
+    >
+    <Page id="page" title="Criterios" showHeader="false" showNavButton="true"  navButtonPress=".onApp" >
+        <content> 
+            <tnt:ToolHeader id="th1">  
+                <!-- <Button id="idNavMenu2" icon="sap-icon://nav-back" press="onApp"/>   -->
+                <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png" />
+                <ToolbarSpacer id="space1"/>  
+                    <Title id="tituloid3" level="H3" text="SMARTPACKING" /> 
+                <ToolbarSpacer id="space2"/>  
+                <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
+            </tnt:ToolHeader>
+<Page id="pageCabecera001" class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer" titleLevel="H2" title="REGISTRO DE PRODUCTO INTERMEDIO" navButtonPress=".onApp" showNavButton="true" >
+
+                <VBox>
+                                       <tab:Table id="table01comparar"
+        showNoData="true"
+        selectionMode="Single"
+        selectionBehavior="RowOnly"
+        visibleRowCount="7"
+        enableSelectAll="false" 
+        rows="{  path: 'myParam>/aplicarCotizacion' }" 
+        ariaLabelledBy="title" 
+        cellClick="rowSelectionChangeMovimiento">
+        <tab:extension>
+            <OverflowToolbar id="tab01Id006" style="Clear">
+            <!-- <SearchField search="onSearchDespacho" width="auto"/>-->
+                <ToolbarSpacer id="tab01Id007" /> 
+                <Button id="tab01Id0011" icon="sap-icon://compare" text="Notificación de Producto Intermedio" press="onCompararC2"/>   
+            </OverflowToolbar>
+        </tab:extension>
+        <tab:columns>
+            <tab:Column id="table01Id001" sortProperty="material" filterProperty="material" autoResizable="true" width="auto">
+                <Label id="table01Id001l" textAlign="Center" wrapping ="true"  text="PRODUCTO INTERMEDIO" />
+                <tab:template>  <Text id="table01Id001li" text="{myParam>material}" wrapping="false" /> </tab:template>
+            </tab:Column>
+            <tab:Column id="table01Id002" sortProperty="articuloRFQ" filterProperty="articuloRFQ" autoResizable="true" width="auto">
+                <Label id="table01Id002l" textAlign="Center" wrapping ="true"  text="LOTE" />
+                <tab:template> <Text id="table01Id002i" text="{myParam>articuloRFQ}" wrapping="false" /> </tab:template>
+            </tab:Column>
+            <tab:Column id="table01Id003" sortProperty="valorCot" filterProperty="valorCot" autoResizable="true" width="auto">
+                <Label id="table01Id003l" textAlign="Center" wrapping ="true"  text="BATCH" />
+                <tab:template>  <Text id="table01Id003i" text="{myParam>valorCot}"  wrapping="false" /> </tab:template>
+            </tab:Column>
+            <tab:Column id="table01Id004" sortProperty="cotsolicitado" filterProperty="cotsolicitado" autoResizable="true" width="auto">
+                <Label id="table01Id004l" textAlign="Center" wrapping ="true"  text="AUTOCLAVE" />
+                <tab:template>  <Text id="table01Id004i" text="{myParam>cotsolicitado}" wrapping="false" /> </tab:template>
+            </tab:Column>
+            <tab:Column id="table01Id005" sortProperty="fecha" filterProperty="fecha" autoResizable="true" width="auto">
+                <Label id="table01Id005l" textAlign="Center" wrapping ="true"  text="TURNO" />
+                <tab:template> <Text id="table01Id005i" text="{myParam>fecha}" wrapping="false"/> </tab:template>
+            </tab:Column>
+            <tab:Column id="table01Id006" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="auto">
+                <Label id="table01Id006l" textAlign="Center" wrapping ="true"  text="HORA" />
+                <tab:template> <Text id="table01Id006i" text="{myParam>articulo}" wrapping="false" /> </tab:template>
+            </tab:Column>
+            <tab:Column id="table01Id00622" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="auto">
+                <Label id="table01Id006l22" textAlign="Center" wrapping ="true"  text="PALLET" />
+                <tab:template> <Text id="table01Id006i22" text="{myParam>articulo}" wrapping="false" /> </tab:template>
+            </tab:Column>
+            <tab:Column id="table01Id00623" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="auto">
+                <Label id="table01Id006l23" textAlign="Center" wrapping ="true"  text="ETIQUETA" />
+                <tab:template> <Text id="table01Id006i23" text="{myParam>articulo}" wrapping="false" /> </tab:template>
+            </tab:Column>
+        </tab:columns>
+    </tab:Table>
+                  </VBox>                          
+                                    
+            </Page> 
+        </content>
+        <footer>
+			<OverflowToolbar>
+					<ToolbarSpacer />
+					<Button id="tab1" icon="sap-icon://save" text="Registrar" tooltip="Guardar" press=""/>  
+                    <Button id="tab2" icon="sap-icon://cancel" text="Cancelar" tooltip="Cancelar" press=""/>
+			</OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>

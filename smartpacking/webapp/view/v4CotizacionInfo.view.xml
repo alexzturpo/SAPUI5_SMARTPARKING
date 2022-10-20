@@ -1,0 +1,145 @@
+<mvc:View controllerName="sp.smartpacking.controller.v4CotizacionInfo"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"   
+    xmlns:core="sap.ui.core"  
+    xmlns:tab="sap.ui.table" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
+    xmlns:fb="sap.ui.comp.filterbar"
+    >
+    
+   <Page id="page" title="Criterios" showHeader="false" showNavButton="true"  navButtonPress=".onAdministrarC"  > 
+        <content> 
+            <tnt:ToolHeader id="th1">  
+                <!-- <Button id="idNavMenu2" icon="sap-icon://nav-back" press="onApp"/>   -->
+                <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png" />
+                <ToolbarSpacer id="space1"/>  
+                    <Title id="tituloid3" level="H3" text="SMARTPACKING" /> 
+                <ToolbarSpacer id="space2"/>  
+                <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
+            </tnt:ToolHeader>
+            <Page id="pageCabecera001" titleLevel="H2"  class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer"
+                title="REGISTRO DE ETIQUETAS" navButtonPress=".onAdministrarC" showNavButton="true" >
+            <content>
+                <layout:VerticalLayout id="vmainId005" class="sapUiMediumMarginEnd" width="100%">
+                            <fb:FilterBar id="Fb01Id001" reset="onReset" search="onSearch" showRestoreButton="true" >
+                            <fb:filterGroupItems>
+                                <fb:FilterGroupItem id="Fbi01I123" groupName="G1" name="A3" label="Fecha" partOfCurrentVariant="true" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <DatePicker id="pickerDespacho1" placeholder="Ingrese" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy"/> 
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem id="Fbi01Id003" groupName="G1" groupTitle="Group1" name="A1" label="Pedido" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <ComboBox id="idEtiqueta" items="{/listMaterial}" placeholder="- Seleccione -" required="true" width="100%">
+																<core:Item id="itemEtiqueta" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+															</ComboBox>
+                                    </fb:control>
+                                </fb:FilterGroupItem>                          
+                                <fb:FilterGroupItem id="Fbi01Id002" groupName="G0" name="B" label="Material"   partOfCurrentVariant="true" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <ComboBox id="idEtiqueta3" items="{/listMaterial}" placeholder="- Seleccione -" required="true" width="100%">
+																<core:Item id="itemEtiqueta3" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+															</ComboBox>
+                                    </fb:control>
+                                </fb:FilterGroupItem>                            
+                                <fb:FilterGroupItem  id="Fbi01Id007" groupName="G2" groupTitle="Group2" name="B2" label="Lote de Producción" visibleInFilterBar="true">
+                                    <fb:control>
+                                       <ComboBox id="idEtiqueta32" items="{/listMaterial}" placeholder="- Seleccione -" required="true" width="100%">
+																<core:Item id="itemEtiqueta32" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+															</ComboBox>
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem  id="Fbi01Id008" groupName="G2" groupTitle="Group2" name="B3" label="" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <Button id="idSKU" text="Reimpresión" design="Transparent" />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                            </fb:filterGroupItems>                        
+                        </fb:FilterBar>
+                    </layout:VerticalLayout>
+            </content>
+		    <content>
+				<layout:VerticalLayout id="vmai5" class="sapUiSmallMargin" width="100%">
+                                        <layout:Grid defaultSpan="L3 M3 S4">
+											<layout:content>
+                                                <VBox class="sapUiSmallMargin">   
+												</VBox>
+												<VBox class="sapUiSmallMargin">
+													<Label text="Cód. Etiqueta Caja" design="Bold" labelFor="idFCL"/>
+													<Switch accessibleNameRef="regularSwitchLabel" textOff="Off" textOn="On" change="handleChange" class="sapUiSmallMarginBottom"></Switch>
+													<Label text="Cód. Etiqueta Pallet" design="Bold" labelFor="idPallet"/>
+													<Switch accessibleNameRef="regularSwitchLabel2"  checked="false" textOff="Off" textOn="On" change="handleChange2" class="sapUiSmallMarginBottom"></Switch>
+                                                    
+												</VBox>
+												<VBox class="sapUiSmallMargin">
+													<Label text="Cantidad de Etiqueta" design="Bold" labelFor="idEtiqCaja"/>
+													<Input id="idEtiqCaja" value="" type="Text" placeholder="" required="true" class="sapUiSmallMarginBottom"/>
+													<Label text="Cantidad" design="Bold" labelFor="idEtiqPal"/>
+													<Input id="idEtiqPal" value="" type="Text" placeholder="" required="true" class="sapUiSmallMarginBottom"/>
+												</VBox>
+											</layout:content>
+										</layout:Grid>
+                                        </layout:VerticalLayout>
+                                        <VBox class="sapUiSmallMargin">
+                                            <tab:Table id="table01comparar"
+                                            showNoData="true"
+                                            selectionMode="Single"
+                                            selectionBehavior="RowOnly"
+                                            visibleRowCount="7"
+                                            enableSelectAll="false" 
+                                            rows="{  path: 'myParam>/tbl_T_VISTA_MOVI' }" 
+                                            ariaLabelledBy="title" 
+                                            cellClick="rowSelectionChangeMovimiento">
+                                            <tab:extension>
+                                                <OverflowToolbar id="tab01Id006" style="Clear">
+                                                    <Title id="title" text="Lista de Etiquetas"/>
+                                                    <ToolbarSpacer id="tab01Id007" /> 
+                                                    
+                                                </OverflowToolbar>
+                                            </tab:extension>
+                                            <tab:columns>
+                                                <tab:Column id="table01Id001" sortProperty="DOC_MOVIMIENTO" filterProperty="DOC_MOVIMIENTO" autoResizable="true" width="auto">
+                                                    <Label id="table01Id001l" textAlign="Center" wrapping ="true"  text="FECHA" />
+                                                    <tab:template>  <Text id="table01Id001li" text="{myParam>DOC_MOVIMIENTO}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id002" sortProperty="GJAHR" filterProperty="GJAHR" autoResizable="true" width="auto">
+                                                    <Label id="table01Id002l" textAlign="Center" wrapping ="true"  text="MATERIAL" />
+                                                    <tab:template> <Text id="table01Id002i" text="{myParam>GJAHR}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id003" sortProperty="FECHA_MOVIMIENTO" filterProperty="FECHA_MOVIMIENTO" autoResizable="true" width="auto">
+                                                    <Label id="table01Id003l" textAlign="Center" wrapping ="true"  text="PEDIDO" />
+                                                    <tab:template>  <Text id="table01Id003i" text="{myParam>FECHA_MOVIMIENTO}"  wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id004" sortProperty="ANLN1" filterProperty="ANLN1" autoResizable="true" width="auto">
+                                                    <Label id="table01Id004l" textAlign="Center" wrapping ="true"  text="VOLCADO" />
+                                                    <tab:template>  <Text id="table01Id004i" text="{myParam>ANLN1}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id005" sortProperty="ANLN2" filterProperty="ANLN2" autoResizable="true" width="auto">
+                                                    <Label id="table01Id005l" textAlign="Center" wrapping ="true"  text="LOTE DE RECEPCIÓN" />
+                                                    <tab:template> <Input id="table01Id005i" value="{myParam>ANLN2}"  /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id006" sortProperty="TXT50" filterProperty="TXT50" autoResizable="true" width="auto">
+                                                    <Label id="table01Id006l" textAlign="Center" wrapping ="true"  text="Nª CAJAS" />
+                                                    <tab:template> <Text id="table01Id006i" text="{myParam>TXT50}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                 
+                                            </tab:columns>
+                                        </tab:Table> 
+                                        </VBox>
+
+		    </content>
+		
+	</Page>
+    </content>
+    <footer>
+			<OverflowToolbar>
+					<ToolbarSpacer />
+					<Button text="Imprimir" />
+					<Button text="Cancelar" />
+			</OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>
