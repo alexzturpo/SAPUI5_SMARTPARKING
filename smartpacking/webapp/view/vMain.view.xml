@@ -1,7 +1,9 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sp.smartpacking.controller.vMain"
-	xmlns:tab="sap.ui.table" xmlns:layout="sap.ui.layout" xmlns:ux="sap.uxap" xmlns:m="sap.m" xmlns:t="sap.tnt" displayBlock="true" xmlns:f="sap.ui.layout.form"
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" 
+    controllerName="sp.smartpacking.controller.vMain"
+	xmlns:tab="sap.ui.table" xmlns:layout="sap.ui.layout" xmlns:ux="sap.uxap" 
+    xmlns:m="sap.m" xmlns:t="sap.tnt" displayBlock="true" xmlns:f="sap.ui.layout.form"
     xmlns:commons="sap.suite.ui.commons" xmlns:fb="sap.ui.comp.filterbar"
-	xmlns:html="http://www.w3.org/1999/xhtml">
+	xmlns:html="http://www.w3.org/1999/xhtml">  
 	<App>
 		<m:pages>
 			<m:SplitApp id="SplitAppDemo" initialDetail="detail0" initialMaster="master1" afterMasterOpen="showEvent" afterMasterNavigate="showEvent"
