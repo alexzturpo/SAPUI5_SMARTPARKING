@@ -22,13 +22,13 @@
 <Page id="pageCabecera001" class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer" titleLevel="H2" title="REGISTRO DE PRODUCTO INTERMEDIO" navButtonPress=".onApp" showNavButton="true" >
 
                 <VBox>
-                                       <tab:Table id="table01comparar"
+                                       <tab:Table id="table01comparar_Cotizacion"
         showNoData="true"
         selectionMode="Single"
         selectionBehavior="RowOnly"
         visibleRowCount="7"
         enableSelectAll="false" 
-        rows="{  path: 'myParam>/aplicarCotizacion' }" 
+        rows="{  path: 'Model_Table_Registro_Cotizacion>/value' }" 
         ariaLabelledBy="title" 
         cellClick="rowSelectionChangeMovimiento">
         <tab:extension>
@@ -41,35 +41,35 @@
         <tab:columns>
             <tab:Column id="table01Id001" sortProperty="material" filterProperty="material" autoResizable="true" width="auto">
                 <Label id="table01Id001l" textAlign="Center" wrapping ="true"  text="PRODUCTO INTERMEDIO" />
-                <tab:template>  <Text id="table01Id001li" text="{myParam>material}" wrapping="false" /> </tab:template>
+                <tab:template>  <Text id="table01Id001li" text="{Model_Table_Registro_Cotizacion>MATNR}" wrapping="false" /> </tab:template>
             </tab:Column>
             <tab:Column id="table01Id002" sortProperty="articuloRFQ" filterProperty="articuloRFQ" autoResizable="true" width="auto">
                 <Label id="table01Id002l" textAlign="Center" wrapping ="true"  text="LOTE" />
-                <tab:template> <Text id="table01Id002i" text="{myParam>articuloRFQ}" wrapping="false" /> </tab:template>
+                <tab:template> <Text id="table01Id002i" text="{Model_Table_Registro_Cotizacion>ZCOD_VOL}" wrapping="false" /> </tab:template>
             </tab:Column>
             <tab:Column id="table01Id003" sortProperty="valorCot" filterProperty="valorCot" autoResizable="true" width="auto">
                 <Label id="table01Id003l" textAlign="Center" wrapping ="true"  text="BATCH" />
-                <tab:template>  <Text id="table01Id003i" text="{myParam>valorCot}"  wrapping="false" /> </tab:template>
+                <tab:template>  <Text id="table01Id003i" text="{Model_Table_Registro_Cotizacion>WERKS}"  wrapping="false" /> </tab:template>
             </tab:Column>
             <tab:Column id="table01Id004" sortProperty="cotsolicitado" filterProperty="cotsolicitado" autoResizable="true" width="auto">
                 <Label id="table01Id004l" textAlign="Center" wrapping ="true"  text="AUTOCLAVE" />
-                <tab:template>  <Text id="table01Id004i" text="{myParam>cotsolicitado}" wrapping="false" /> </tab:template>
+                <tab:template>  <Text id="table01Id004i" text="{Model_Table_Registro_Cotizacion>WERKS}" wrapping="false" /> </tab:template>
             </tab:Column>
             <tab:Column id="table01Id005" sortProperty="fecha" filterProperty="fecha" autoResizable="true" width="auto">
                 <Label id="table01Id005l" textAlign="Center" wrapping ="true"  text="TURNO" />
-                <tab:template> <Text id="table01Id005i" text="{myParam>fecha}" wrapping="false"/> </tab:template>
+                <tab:template> <Text id="table01Id005i" text="{Model_Table_Registro_Cotizacion>WERKS}" wrapping="false"/> </tab:template>
             </tab:Column>
             <tab:Column id="table01Id006" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="auto">
                 <Label id="table01Id006l" textAlign="Center" wrapping ="true"  text="HORA" />
-                <tab:template> <Text id="table01Id006i" text="{myParam>articulo}" wrapping="false" /> </tab:template>
+                <tab:template> <Text id="table01Id006i" text="{Model_Table_Registro_Cotizacion>WERKS}" wrapping="false" /> </tab:template>
             </tab:Column>
             <tab:Column id="table01Id00622" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="auto">
                 <Label id="table01Id006l22" textAlign="Center" wrapping ="true"  text="PALLET" />
-                <tab:template> <Text id="table01Id006i22" text="{myParam>articulo}" wrapping="false" /> </tab:template>
+                <tab:template> <Text id="table01Id006i22" text="{Model_Table_Registro_Cotizacion>WERKS}" wrapping="false" /> </tab:template>
             </tab:Column>
             <tab:Column id="table01Id00623" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="auto">
                 <Label id="table01Id006l23" textAlign="Center" wrapping ="true"  text="ETIQUETA" />
-                <tab:template> <Text id="table01Id006i23" text="{myParam>articulo}" wrapping="false" /> </tab:template>
+                <tab:template> <Text id="table01Id006i23" text="{Model_Table_Registro_Cotizacion>WERKS}" wrapping="false" /> </tab:template>
             </tab:Column>
         </tab:columns>
     </tab:Table>

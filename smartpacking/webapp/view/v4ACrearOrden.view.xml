@@ -21,70 +21,70 @@
             </tnt:ToolHeader>
             <Page id="pageCabecera001" class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer" titleLevel="H2" title="RECEPCIÓN DE MP" navButtonPress=".onApp" showNavButton="true" >
 
-<f:Form id="FormChange480_12120Dual"
-                                                    editable="true">
-                                                    <f:title>
-                                                        <core:Title text="Nuevo Registro" />
-                                                    </f:title>
-                                                    <f:layout>
-                                                        <f:ResponsiveGridLayout
-                                                            labelSpanXL="6"
-                                                            labelSpanL="6"
-                                                            labelSpanM="12"
-                                                            labelSpanS="12"
-                                                            adjustLabelSpan="false"
-                                                            emptySpanXL="0"
-                                                            emptySpanL="0"
-                                                            emptySpanM="0"
-                                                            emptySpanS="0"
-                                                            columnsXL="3"
-                                                            columnsL="3"
-                                                            columnsM="3"
-                                                            singleContainerFullSize="false" />
-                                                    </f:layout>
-                                                    <f:formContainers>
-                                                        <f:FormContainer>
-                                                            <f:formElements>
-                                                                <f:FormElement label="Fecha">
-                                                                    <f:fields>
-                                                                        <DatePicker id="pickerDespacho1" placeholder="Ingrese" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy"/>
-                                                                    </f:fields>
-                                                                </f:FormElement>
-                                                            </f:formElements>
-                                                        </f:FormContainer>
-                                                        <f:FormContainer>
-                                                            <f:formElements>
-                                                                <f:FormElement label="Material">
-                                                                    <f:fields>
-                                                                        <ComboBox id="idMaterial" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
-																<core:Item id="itemMaterial" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
-															</ComboBox>
-                                                                    </f:fields>
-                                                                </f:FormElement>
-                                                            </f:formElements>
-                                                        </f:FormContainer>
-                                                        <f:FormContainer>
-                                                            <f:formElements>
-                                                                <f:FormElement label="Almacén">
-                                                                    <f:fields>
-                                                                        <ComboBox id="idVolcado" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
-																            <core:Item id="itemVolcado" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
-															            </ComboBox>
-                                                                    </f:fields>
-                                                                </f:FormElement>
-                                                            </f:formElements>
-                                                        </f:FormContainer>
-                                                        
-                                                    </f:formContainers>
-                                                </f:Form>
+                <f:Form id="FormChange480_12120Dual"
+                    editable="true">
+                    <f:title>
+                        <core:Title text="Nuevo Registro" />
+                    </f:title>
+                    <f:layout>
+                        <f:ResponsiveGridLayout
+                            labelSpanXL="6"
+                            labelSpanL="6"
+                            labelSpanM="12"
+                            labelSpanS="12"
+                            adjustLabelSpan="false"
+                            emptySpanXL="0"
+                            emptySpanL="0"
+                            emptySpanM="0"
+                            emptySpanS="0"
+                            columnsXL="3"
+                            columnsL="3"
+                            columnsM="3"
+                            singleContainerFullSize="false" />
+                    </f:layout>
+                    <f:formContainers>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement label="Fecha">
+                                    <f:fields>
+                                        <DatePicker id="pickerDespacho1" placeholder="Ingrese" change="handleChange" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy"/>
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement label="Material">
+                                    <f:fields>
+                                        <ComboBox id="idMaterial" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
+                                <core:Item id="itemMaterial" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                            </ComboBox>
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement label="Almacén">
+                                    <f:fields>
+                                        <ComboBox id="idVolcado" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
+                                            <core:Item id="itemVolcado" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                                        </ComboBox>
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                        
+                    </f:formContainers>
+                </f:Form>
                 <VBox>
-                                        <tab:Table id="table01comparar"
+                                        <tab:Table id="table01comparar_recepcionMP"
         showNoData="true"
         selectionMode="Single"
         selectionBehavior="RowOnly"
         visibleRowCount="7"
         enableSelectAll="false" 
-        rows="{  path: 'myParam>/aplicarCotizacion' }" 
+        rows="{  path: 'Model_Table_RecepcionMP>/value' }"  
         ariaLabelledBy="title" 
         cellClick="rowSelectionChangeMovimiento">
         <tab:extension>
@@ -98,27 +98,27 @@
             
             <tab:Column id="table01Id002" sortProperty="articuloRFQ" filterProperty="articuloRFQ" autoResizable="true" width="auto">
                 <Label id="table01Id002l" textAlign="Center" wrapping ="true"  text="CÓDIGO MATERIAL" />
-                <tab:template> <Text id="table01Id002i" text="{myParam>articuloRFQ}" wrapping="false" /> </tab:template>
+                <tab:template> <Text id="table01Id002i" text="{Model_Table_RecepcionMP>ZCOD_VOL}" wrapping="false" /> </tab:template>
             </tab:Column>
             <tab:Column id="table01Id001" sortProperty="material" filterProperty="material" autoResizable="true" width="auto">
                 <Label id="table01Id001l" textAlign="Center" wrapping ="true"  text="DESCRIPCIÓN" />
-                <tab:template>  <Text id="table01Id001li" text="{myParam>material}" wrapping="false" /> </tab:template>
+                <tab:template>  <Text id="table01Id001li" text="{Model_Table_RecepcionMP>MATNR}" wrapping="false" /> </tab:template>
             </tab:Column>
             <tab:Column id="table01Id003" sortProperty="valorCot" filterProperty="valorCot" autoResizable="true" width="auto">
                 <Label id="table01Id003l" textAlign="Center" wrapping ="true"  text="CALIBRE" />
-                <tab:template>  <Text id="table01Id003i" text="{myParam>valorCot}"  wrapping="false" /> </tab:template>
+                <tab:template>  <Text id="table01Id003i" text="{Model_Table_RecepcionMP>WERKS}"  wrapping="false" /> </tab:template>
             </tab:Column>
             <tab:Column id="table01Id0062" sortProperty="articulo" filterProperty="valorCot" autoResizable="true" width="auto">
                 <Label id="table01Id006l2" textAlign="Center" wrapping ="true"  text="LOTE DE RECEP." />
-                <tab:template> <Text id="table01Id006i2" text="{myParam>valorCot}" wrapping="false" /> </tab:template>
+                <tab:template> <Text id="table01Id006i2" text="{Model_Table_RecepcionMP>WERKS}" wrapping="false" /> </tab:template>
             </tab:Column>
             <tab:Column id="table01Id0032" sortProperty="valorCot" filterProperty="valorCot" autoResizable="true" width="auto">
                 <Label id="table01Id003l2" textAlign="Center" wrapping ="true"  text="CANTIDAD" />
-                <tab:template>  <Text id="table01Id003i2" text="{myParam>valorCot}"  wrapping="false" /> </tab:template>
+                <tab:template>  <Text id="table01Id003i2" text="{Model_Table_RecepcionMP>MENGE}"  wrapping="false" /> </tab:template>
             </tab:Column>
             <tab:Column id="table01Id006" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="auto">
                 <Label id="table01Id006l" textAlign="Center" wrapping ="true"  text="PESO" />
-                <tab:template> <Text id="table01Id006i" text="{myParam>articulo}" wrapping="false" /> </tab:template>
+                <tab:template> <Text id="table01Id006i" text="{Model_Table_RecepcionMP>WERKS}" wrapping="false" /> </tab:template>
             </tab:Column>
         </tab:columns>
     </tab:Table>

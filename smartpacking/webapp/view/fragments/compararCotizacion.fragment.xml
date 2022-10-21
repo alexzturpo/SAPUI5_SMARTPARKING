@@ -10,191 +10,116 @@
    >
    <Dialog
       id="d2CompararID" contentWidth="60rem"
-      title="Registro de Productos Calibrados" draggable="true" showHeader="true">  
-      <!-- <Carousel
-        height="auto"
-        class="sapUiSmallMarginBottom"
-        id="carousel-expanded"
-        pageChanged="onPageChanged"
-        pageIndicatorPlacement="Top"
-        showPageIndicator="{= !${settings>/isDesktop} }"
-        pages="{  path: '/dataComparar' }">
-        <customLayout>
-            <CarouselLayout id="d2Id001" visiblePagesCount="2" />
-        </customLayout>
-
-        <f:Card id="d2Id002" class="sapUiTinyMarginTop">
-            <f:header>
-                <cards:Header id="d2Id003"
-                    title="{citaProv}"
-                    subtitle="Selecionado"
-                    iconSrc="{picIcon}"
-                    iconDisplayShape="Square" />
-            </f:header>
-            <f:content>
-                <l:VerticalLayout id="d2Id004" width="100%">
-                    <l:BlockLayout id="d2Id005">
-                        <l:BlockLayoutRow id="d2Id006">
-                            <l:BlockLayoutCell id="d2Id007">
-                                <HBox id="d2Id008">
-                                    <Label id="d2Id009" text="Proveedor:"/>
-                                </HBox>
-                                <HBox id="d2Id010" class="sapUiSmallMarginBottom">
-                                    <Text id="d2Id011" text="{nombreProv} ({provedor})" />
-                                </HBox>
-                                <HBox id="d2Id012">
-                                    <Label id="d2Id013" text="Valor Total:"/>
-                                </HBox>
-                                <HBox id="d2Id014" class="sapUiSmallMarginBottom">
-                                    <Text id="d2Id015" text="{valorTotal}" />
-                                </HBox>
-                                <HBox id="d2Id016">
-                                    <Label id="d2Id017" text="Dirección:"/>
-                                </HBox>
-                                <HBox id="d2Id018" class="sapUiSmallMarginBottom">
-                                    <Text id="d2Id019" text="{direccion}" />
-                                </HBox>
-                            </l:BlockLayoutCell>
-                            <l:BlockLayoutCell id="d2Id020">
-                                <HBox id="d2Id021">
-                                    <Label id="d2Id022" text="Ancho (cm)" />
-                                </HBox>
-                                <HBox id="d2Id023" class="sapUiSmallMarginBottom">
-                                    <Text id="d2Id024" text="{ancho}" />
-                                </HBox>
-                                <HBox id="d2Id025">
-                                     <Label id="d2Id026" text="Alto (cm)" />
-                                </HBox>
-                                <HBox id="d2Id027" class="sapUiSmallMarginBottom">
-                                    <Text id="d2Id028" text="{alto}" />
-                                </HBox>
-                                <HBox id="d2Id029">
-                                    <Label id="d2Id030" text="Peso (kg)" />
-                                </HBox>
-                                <HBox id="d2Id031" class="sapUiSmallMarginBottom">
-                                    <Text id="d2Id032" text="{peso}"/>
-                                </HBox>
-                                <HBox id="d2Id040" renderType="Bare" justifyContent="SpaceBetween"> 
-                                    <Button id="d2Id041" text="Apreobar" press=".onBookPress" type="Accept" class="sapUiTinyMarginBegin" />
-                                </HBox>
-                            </l:BlockLayoutCell>
-                        </l:BlockLayoutRow>
-                    </l:BlockLayout>
-                </l:VerticalLayout>
-                
-            </f:content>
-        </f:Card>
-    </Carousel> -->
-    
+      title="Registro de Productos Calibrados" draggable="true" showHeader="true">   
     <VBox class="sapUiSmallMargin">
-                                                <f:Form id="FormChange480_12120Dual"
-                                                    editable="true">
-                                                    <f:title>
-                                                        <core:Title text="Nuevo Registro" />
-                                                    </f:title>
-                                                    <f:layout>
-                                                        <f:ResponsiveGridLayout
-                                                            labelSpanXL="6"
-                                                            labelSpanL="6"
-                                                            labelSpanM="12"
-                                                            labelSpanS="12"
-                                                            adjustLabelSpan="false"
-                                                            emptySpanXL="0"
-                                                            emptySpanL="0"
-                                                            emptySpanM="0"
-                                                            emptySpanS="0"
-                                                            columnsXL="3"
-                                                            columnsL="3"
-                                                            columnsM="3"
-                                                            singleContainerFullSize="false" />
-                                                    </f:layout>
-                                                    <f:formContainers>
-                                                        <f:FormContainer>
-                                                            <f:formElements>
-                                                                <f:FormElement label="FECHA DE PRD.">
-                                                                    <f:fields>
-                                                                        <DatePicker value="" id="name"/>
-                                                                    </f:fields>
-                                                                </f:FormElement>
-                                                            </f:formElements>
-                                                        </f:FormContainer>
-                                                        <f:FormContainer>
-                                                            <f:formElements>
-                                                                <f:FormElement label="PEDIDO">
-                                                                    <f:fields>
-                                                                        <ComboBox id="idMaterial" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
-																<core:Item id="itemMaterial" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
-															</ComboBox>
-                                                                    </f:fields>
-                                                                </f:FormElement>
-                                                            </f:formElements>
-                                                        </f:FormContainer>
-                                                        <f:FormContainer>
-                                                            <f:formElements>
-                                                                <f:FormElement label="LOTE PRD.">
-                                                                    <f:fields>
-                                                                        <ComboBox id="idLotePRD" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
-																<core:Item id="itemLotePRD" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
-															</ComboBox>
-                                                                    </f:fields>
-                                                                </f:FormElement>
-                                                            </f:formElements>
-                                                        </f:FormContainer>
-                                                        <f:FormContainer>
-                                                            <f:formElements>
-                                                                <f:FormElement label="RESPONSABLE">
-                                                                    <f:fields>
-                                                                        <Input value="{SupplierName}"/>
-                                                                    </f:fields>
-                                                                </f:FormElement>
-                                                            </f:formElements>
-                                                        </f:FormContainer>
-                                                        <f:FormContainer>
-                                                            <f:formElements>
-                                                                <f:FormElement label="CLIENTE">
-                                                                    <f:fields>
-                                                                        <Input value="{SupplierName}"/>
-                                                                    </f:fields>
-                                                                </f:FormElement>
-                                                            </f:formElements>
-                                                        </f:FormContainer>
-                                                        <f:FormContainer>
-                                                            <f:formElements>
-                                                                <f:FormElement label="TURNO">
-                                                                    <f:fields>
-                                                                        <Input value="{SupplierName}"/>
-                                                                    </f:fields>
-                                                                </f:FormElement>
-                                                            </f:formElements>
-                                                        </f:FormContainer>
-                                                        <f:FormContainer>
-                                                            <f:formElements>
-                                                                <f:FormElement label="ETIQUETA">
-                                                                    <f:fields>
-                                                                        <ComboBox id="idEtiqueta" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
-																<core:Item id="itemEtiqueta" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
-															</ComboBox>
-                                                                    </f:fields>
-                                                                </f:FormElement>
-                                                            </f:formElements>
-                                                        </f:FormContainer>
-                                                        <f:FormContainer>
-                                                            <f:formElements>
-                                                                <f:FormElement label="Total de Cajas">
-                                                                    <f:fields>
-                                                                        <Input value="{SupplierName}"/>
-                                                                    </f:fields>
-                                                                </f:FormElement>
-                                                            </f:formElements>
-                                                        </f:FormContainer>
-                                                    </f:formContainers>
-                                                </f:Form>
-                                                <Bar>
-                                            <contentRight>
-                                                <Button id="tab02Id0011" icon="sap-icon://save" text="Guardar" tooltip="Guardar" press="onD2Cancelar"/>  
-                                                <Button id="tab02Id0012" icon="sap-icon://cancel" text="Cancelar" tooltip="Cancelar" press="onD2Cancelar"/>
-                                            </contentRight>
-                                                </Bar>
-                                        </VBox> 
+            <f:Form id="FormChange480_12120Dual"
+                editable="true">
+                <f:title>
+                    <core:Title text="Nuevo Registro" />
+                </f:title>
+                <f:layout>
+                    <f:ResponsiveGridLayout
+                        labelSpanXL="6"
+                        labelSpanL="6"
+                        labelSpanM="12"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="0"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        emptySpanS="0"
+                        columnsXL="3"
+                        columnsL="3"
+                        columnsM="3"
+                        singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="FECHA DE PRD.">
+                                <f:fields>
+                                    <DatePicker value="" id="picker2" change="handleChange"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="PEDIDO">
+                                <f:fields>
+                                    <ComboBox id="idMaterial" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
+                            <core:Item id="itemMaterial" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                        </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="LOTE PRD.">
+                                <f:fields>
+                                    <ComboBox id="idLotePRD" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
+                            <core:Item id="itemLotePRD" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                        </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="RESPONSABLE">
+                                <f:fields>
+                                    <Input value="" id="responsable"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="CLIENTE">
+                                <f:fields>
+                                    <Input value="" id="cliente"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="TURNO">
+                                <f:fields>
+                                    <Input value="" id="turno"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="ETIQUETA">
+                                <f:fields>
+                                    <ComboBox id="idEtiqueta" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
+                            <core:Item id="itemEtiqueta" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                        </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Total de Cajas">
+                                <f:fields>
+                                    <Input value="" id="total"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+            <Bar>
+        <contentRight>
+            <Button id="tab02Id0011" icon="sap-icon://save" text="Guardar" tooltip="Guardar" press="onD2GuardarProducto"/>  
+            <Button id="tab02Id0012" icon="sap-icon://cancel" text="Cancelar" tooltip="Cancelar" press="onD2Cancelar"/>
+        </contentRight>
+            </Bar>
+    </VBox> 
    </Dialog>
 </core:FragmentDefinition>

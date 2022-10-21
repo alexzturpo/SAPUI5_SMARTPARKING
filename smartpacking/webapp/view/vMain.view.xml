@@ -259,7 +259,8 @@
 								</ux:ObjectPageSection>
 							</ux:sections>
 						</ux:ObjectPageLayout>
-						<m:footer>
+						<!--
+                        <m:footer>
 							<m:Bar>
 								<m:contentLeft>
 									<m:Button icon="sap-icon://message-popup" text="{/length}" type="Emphasized" press="handleMessageViewPress"/>
@@ -270,6 +271,7 @@
 								</m:contentRight>
 							</m:Bar>
 						</m:footer>
+                        -->
 					</m:Page>
 
 					
