@@ -19,10 +19,9 @@
                 <ToolbarSpacer id="space2"/>  
                 <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
             </tnt:ToolHeader>
-            <Page id="pageCabecera001" class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer" titleLevel="H2" title="RECEPCIÓN DE MP" navButtonPress=".onApp" showNavButton="true" >
+            <Page id="pageCabecera001" class="bg_imagen_blur sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer" titleLevel="H2" title="RECEPCIÓN DE MP" navButtonPress=".onApp" showNavButton="true" >
 
-                <f:Form id="FormChange480_12120Dual"
-                    editable="true">
+                <f:Form id="FormChange480_12120Dual" editable="true" class="blanco">
                     <f:title>
                         <core:Title text="Nuevo Registro" />
                     </f:title>
@@ -78,51 +77,51 @@
                     </f:formContainers>
                 </f:Form>
                 <VBox>
-                                        <tab:Table id="table01comparar_recepcionMP"
-        showNoData="true"
-        selectionMode="Single"
-        selectionBehavior="RowOnly"
-        visibleRowCount="7"
-        enableSelectAll="false" 
-        rows="{  path: 'Model_Table_RecepcionMP>/value' }"  
-        ariaLabelledBy="title" 
-        cellClick="rowSelectionChangeMovimiento">
-        <tab:extension>
-            <OverflowToolbar id="tab01Id006" style="Clear">
-                <!-- <SearchField search="onSearchDespacho" width="auto"/>-->
-                <ToolbarSpacer id="tab01Id007" /> 
-                <Button id="tab01Id0011" icon="sap-icon://search" text="Buscar" press="onCompararC2"/>   
-            </OverflowToolbar>
-        </tab:extension>
-        <tab:columns>
-            
-            <tab:Column id="table01Id002" sortProperty="articuloRFQ" filterProperty="articuloRFQ" autoResizable="true" width="auto">
-                <Label id="table01Id002l" textAlign="Center" wrapping ="true"  text="CÓDIGO MATERIAL" />
-                <tab:template> <Text id="table01Id002i" text="{Model_Table_RecepcionMP>ZCOD_VOL}" wrapping="false" /> </tab:template>
-            </tab:Column>
-            <tab:Column id="table01Id001" sortProperty="material" filterProperty="material" autoResizable="true" width="auto">
-                <Label id="table01Id001l" textAlign="Center" wrapping ="true"  text="DESCRIPCIÓN" />
-                <tab:template>  <Text id="table01Id001li" text="{Model_Table_RecepcionMP>MATNR}" wrapping="false" /> </tab:template>
-            </tab:Column>
-            <tab:Column id="table01Id003" sortProperty="valorCot" filterProperty="valorCot" autoResizable="true" width="auto">
-                <Label id="table01Id003l" textAlign="Center" wrapping ="true"  text="CALIBRE" />
-                <tab:template>  <Text id="table01Id003i" text="{Model_Table_RecepcionMP>WERKS}"  wrapping="false" /> </tab:template>
-            </tab:Column>
-            <tab:Column id="table01Id0062" sortProperty="articulo" filterProperty="valorCot" autoResizable="true" width="auto">
-                <Label id="table01Id006l2" textAlign="Center" wrapping ="true"  text="LOTE DE RECEP." />
-                <tab:template> <Text id="table01Id006i2" text="{Model_Table_RecepcionMP>WERKS}" wrapping="false" /> </tab:template>
-            </tab:Column>
-            <tab:Column id="table01Id0032" sortProperty="valorCot" filterProperty="valorCot" autoResizable="true" width="auto">
-                <Label id="table01Id003l2" textAlign="Center" wrapping ="true"  text="CANTIDAD" />
-                <tab:template>  <Text id="table01Id003i2" text="{Model_Table_RecepcionMP>MENGE}"  wrapping="false" /> </tab:template>
-            </tab:Column>
-            <tab:Column id="table01Id006" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="auto">
-                <Label id="table01Id006l" textAlign="Center" wrapping ="true"  text="PESO" />
-                <tab:template> <Text id="table01Id006i" text="{Model_Table_RecepcionMP>WERKS}" wrapping="false" /> </tab:template>
-            </tab:Column>
-        </tab:columns>
-    </tab:Table>
-                  </VBox>                          
+                    <tab:Table id="table01comparar_recepcionMP"
+                        showNoData="true"
+                        selectionMode="Single"
+                        selectionBehavior="RowOnly"
+                        visibleRowCount="7"
+                        enableSelectAll="false" 
+                        rows="{  path: 'Model_Table_RecepcionMP>/value' }"  
+                        ariaLabelledBy="title" 
+                        cellClick="rowSelectionChangeMovimiento">
+                        <tab:extension>
+                            <OverflowToolbar id="tab01Id006" class="blanco" >
+                                <!-- <SearchField search="onSearchDespacho" width="auto"/>-->
+                                <ToolbarSpacer id="tab01Id007" /> 
+                                <Button id="tab01Id0011" icon="sap-icon://search" text="Buscar" press="onCompararC2"/>   
+                            </OverflowToolbar>
+                        </tab:extension>
+                        <tab:columns>
+                            
+                            <tab:Column id="table01Id002" sortProperty="articuloRFQ" filterProperty="articuloRFQ" autoResizable="true" width="auto">
+                                <Label id="table01Id002l" textAlign="Center" wrapping ="true"  text="CÓDIGO MATERIAL" />
+                                <tab:template> <Text id="table01Id002i" text="{Model_Table_RecepcionMP>ZCOD_VOL}" wrapping="false" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column id="table01Id001" sortProperty="material" filterProperty="material" autoResizable="true" width="auto">
+                                <Label id="table01Id001l" textAlign="Center" wrapping ="true"  text="DESCRIPCIÓN" />
+                                <tab:template>  <Text id="table01Id001li" text="{Model_Table_RecepcionMP>MATNR}" wrapping="false" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column id="table01Id003" sortProperty="valorCot" filterProperty="valorCot" autoResizable="true" width="auto">
+                                <Label id="table01Id003l" textAlign="Center" wrapping ="true"  text="CALIBRE" />
+                                <tab:template>  <Text id="table01Id003i" text="{Model_Table_RecepcionMP>WERKS}"  wrapping="false" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column id="table01Id0062" sortProperty="articulo" filterProperty="valorCot" autoResizable="true" width="auto">
+                                <Label id="table01Id006l2" textAlign="Center" wrapping ="true"  text="LOTE DE RECEP." />
+                                <tab:template> <Text id="table01Id006i2" text="{Model_Table_RecepcionMP>WERKS}" wrapping="false" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column id="table01Id0032" sortProperty="valorCot" filterProperty="valorCot" autoResizable="true" width="auto">
+                                <Label id="table01Id003l2" textAlign="Center" wrapping ="true"  text="CANTIDAD" />
+                                <tab:template>  <Text id="table01Id003i2" text="{Model_Table_RecepcionMP>MENGE}"  wrapping="false" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column id="table01Id006" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="auto">
+                                <Label id="table01Id006l" textAlign="Center" wrapping ="true"  text="PESO" />
+                                <tab:template> <Text id="table01Id006i" text="{Model_Table_RecepcionMP>WERKS}" wrapping="false" /> </tab:template>
+                            </tab:Column>
+                        </tab:columns>
+                    </tab:Table>
+                </VBox>                          
                                     
             </Page> 
         </content>

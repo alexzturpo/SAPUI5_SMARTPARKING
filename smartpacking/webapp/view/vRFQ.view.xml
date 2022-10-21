@@ -20,7 +20,7 @@
                 <ToolbarSpacer id="space2"/>  
                 <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
             </tnt:ToolHeader>
-            <Page id="pageCabecera001" titleLevel="H2"  class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer"
+            <Page id="pageCabecera001" titleLevel="H2"  class=" bg_imagen_blur sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer"
                 title="REPROCESO" navButtonPress=".onApp" showNavButton="true" >
             <content>
                 <layout:VerticalLayout id="vmainId005" class="sapUiMediumMarginEnd" width="100%">

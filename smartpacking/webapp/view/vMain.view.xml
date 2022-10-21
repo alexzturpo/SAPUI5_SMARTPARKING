@@ -9,7 +9,7 @@
 			<m:SplitApp id="SplitAppDemo" initialDetail="detail0" initialMaster="master1" afterMasterOpen="showEvent" afterMasterNavigate="showEvent"
 				mode="ShowHideMode">
 				<m:masterPages>
-					<m:Page id="master1" title="Cuadro de busqueda" class="sapUiStdPage sapUiNoContentPadding" showFooter="true">
+					<m:Page id="master1" title="Cuadro de busqueda" class="sapUiStdPage sapUiNoContentPadding " showFooter="true">
 						<m:customHeader>
 							<m:Bar>
 								<m:contentLeft>
@@ -19,18 +19,10 @@
 										<m:Button text="" press="onApp" icon="sap-icon://home"/>
 										
 									</m:HBox>
-								</m:contentLeft>
-								<!--<m:contentMiddle>-->
-								<!--	<m:Title class="clTitle" text="Palta" titleStyle="H5"/>-->
-								<!--</m:contentMiddle>-->
-								<!--<m:contentRight>-->
-								<!--<Text id="txtUser" xmlns="sap.m" text="{userapi>/name}"></Text>-->
-								<!--	<m:Button icon="sap-icon://undo" press="btnBackMenu"/>-->
-								<!--</m:contentRight>-->
+								</m:contentLeft> 
 							</m:Bar>
                             
-						</m:customHeader>
-						<!--<m:Image src="imagenes/imagen5.png"/>-->
+						</m:customHeader> 
 						<m:Panel id="panel1" width="100%" class="sapUiNoContentPadding">
 							<ux:ObjectPageLayout id="ObjectPageLayoutP" alwaysShowContentHeader="true">
 								<ux:headerTitle>
@@ -110,32 +102,32 @@
 				</m:masterPages>
 				<m:detailPages>
 
-                <m:Page id="detail0" title="Vista Volcado" showNavButton="{device>/isPhone}" class="sapUiStdPage">
-                <m:customHeader>
-							<m:Bar id="bar_title_vista_volcado">
-								<!--<m:contentLeft>-->
-								<!--	<m:Button width="100%" icon="sap-icon://nav-back" press="btnBackGuiaRecepcion"/>-->
-								<!--</m:contentLeft>-->
-								<contentMiddle>
+                    <m:Page id="detail0" title="Vista Volcado 1" showNavButton="{device>/isPhone}" class="sapUiStdPage ">
+                        <m:customHeader>
+                            <m:Bar id="bar_title_vista_volcado">
+                                <!--<m:contentLeft>-->
+                                <!--	<m:Button width="100%" icon="sap-icon://nav-back" press="btnBackGuiaRecepcion"/>-->
+                                <!--</m:contentLeft>-->
+                                <contentMiddle>
                                     <!-- <m:Image src="test-resources/sap/tnt/images/SAP_Logo.png"/> -->
-								    <Title id="title_vista_volcado" text="Vista Volcado - PROLAN" titleStyle="H5"/>
-								</contentMiddle>
-							</m:Bar>
-						</m:customHeader>
-						<ux:ObjectPageLayout id="ObjectPageLayout322" alwaysShowContentHeader="true">
-							<ux:headerTitle>
-								<ux:ObjectPageHeader id="headerForTest322" objectTitle="Volcado" objectSubtitle="" objectImageShape="Circle"
-									objectImageURI="">
-									<!--<ux:ObjectPageHeaderActionButton icon="sap-icon://request" text="Nuevo Lote de Recepción" tooltip="Nuevo Lote de Recepción" press="btnNuevoLoteRecepcion"/>-->
-									<ux:actions></ux:actions>
-								</ux:ObjectPageHeader>
-							</ux:headerTitle>
-							
-							<ux:sections>
-								<ux:ObjectPageSection id="idItemLoteRecepcion22" showTitle="false" titleUppercase="true">
-									<ux:subSections>
-										<ux:ObjectPageSubSection id="objact_page_subsection">
-											<VBox id="Aid00012" class="sapUiSmallMargin">
+                                    <Title id="title_vista_volcado" text="Vista Volcado - PROLAN 1" titleStyle="H5"/>
+                                </contentMiddle>
+                            </m:Bar>
+                        </m:customHeader>
+                        <ux:ObjectPageLayout id="ObjectPageLayout322" alwaysShowContentHeader="true"  >
+                            <ux:headerTitle>
+                                <ux:ObjectPageHeader id="headerForTest322" objectTitle="Volcado" objectSubtitle="" objectImageShape="Circle"
+                                    objectImageURI="">
+                                    <!--<ux:ObjectPageHeaderActionButton icon="sap-icon://request" text="Nuevo Lote de Recepción" tooltip="Nuevo Lote de Recepción" press="btnNuevoLoteRecepcion"/>-->
+                                    <ux:actions></ux:actions>
+                                </ux:ObjectPageHeader>
+                            </ux:headerTitle>
+                            
+                            <ux:sections>
+                                <ux:ObjectPageSection id="idItemLoteRecepcion22" showTitle="false" titleUppercase="true" class="bg_imagen_blur">
+                                    <ux:subSections>
+                                        <ux:ObjectPageSubSection id="objact_page_subsection">
+                                            <VBox id="Aid00012" class="sapUiSmallMargin">
                                                 <tab:Table id="table03" showNoData="true" selectionMode="Single"
                                                     selectionBehavior="RowOnly" visibleRowCount="10" enableSelectAll="false" 
                                                     rows="{  path: '/FRQvolcados0' }" ariaLabelledBy="title" cellClick="rowSelectionChangeMovimiento">
@@ -171,35 +163,35 @@
                                                     </tab:columns>
                                                 </tab:Table>
                                             </VBox>
-										</ux:ObjectPageSubSection>
-									</ux:subSections>
-								</ux:ObjectPageSection>
-							</ux:sections>
-						</ux:ObjectPageLayout>
-                <m:footer>
-                                            <m:Bar>
-                                                <m:contentLeft>
-                                                    <m:Button icon="sap-icon://message-popup" text="{/length}" type="Emphasized" press="handleMessageViewPress"/>
-                                                </m:contentLeft>
-                                                <m:contentRight>
-                                                    <!--<m:Button text="Guardar Volcado" id="idNuevoLoteRecep" press="btnNuevoLoteRecepcion" icon="sap-icon://add" type="Emphasized"/>
-                                                    <m:Button text="Detalle de Volcado" id="idConfirmarGR" press="pressConfirmarGuiaRecep" icon="sap-icon://accept" type="Emphasized"/>
-                                                --></m:contentRight>
-                                            </m:Bar>
-                                        </m:footer>
-                                    </m:Page>
+                                        </ux:ObjectPageSubSection>
+                                    </ux:subSections>
+                                </ux:ObjectPageSection>
+                            </ux:sections>
+                        </ux:ObjectPageLayout>
+                        <m:footer>
+                                <m:Bar>
+                                    <m:contentLeft>
+                                        <m:Button icon="sap-icon://message-popup" text="{/length}" type="Emphasized" press="handleMessageViewPress"/>
+                                    </m:contentLeft>
+                                    <m:contentRight>
+                                        <!--<m:Button text="Guardar Volcado" id="idNuevoLoteRecep" press="btnNuevoLoteRecepcion" icon="sap-icon://add" type="Emphasized"/>
+                                        <m:Button text="Detalle de Volcado" id="idConfirmarGR" press="pressConfirmarGuiaRecep" icon="sap-icon://accept" type="Emphasized"/>
+                                    --></m:contentRight>
+                                </m:Bar>
+                        </m:footer>
+                    </m:Page>
 
 
 
-					<m:Page id="page_vista_volcado" title="Vista Volcado" class="sapUiStdPage">
+					<m:Page id="page_vista_volcado" title="Vista Volcado 2" class="sapUiStdPage ">
 						<m:customHeader>
 							<m:Bar id="bar_vista_volcado">
 								<contentMiddle>
-                                	<Title text="Vista Volcado - PROLAN" titleStyle="H5"/>
+                                	<Title text="Vista Volcado - PROLAN 2" titleStyle="H5"/>
 								</contentMiddle>
 							</m:Bar>
 						</m:customHeader>
-						<ux:ObjectPageLayout id="ObjectPageLayout3" alwaysShowContentHeader="true">
+						<ux:ObjectPageLayout id="ObjectPageLayout3" alwaysShowContentHeader="true" height="100%" class="bg_imagen_blur">
 							<ux:headerTitle>
 								<ux:ObjectPageHeader id="headerForTest3" objectTitle="Volcado" objectSubtitle="" objectImageShape="Circle"
 									objectImageURI="">
@@ -209,7 +201,7 @@
 							</ux:headerTitle>
 							
 							<ux:sections>
-								<ux:ObjectPageSection showTitle="false" titleUppercase="true">
+								<ux:ObjectPageSection showTitle="false" titleUppercase="true" class="bg_imagen_blur">
 									<ux:subSections>
 										<ux:ObjectPageSubSection>
 											<VBox class="sapUiSmallMargin">
@@ -258,28 +250,15 @@
 									</ux:subSections>
 								</ux:ObjectPageSection>
 							</ux:sections>
-						</ux:ObjectPageLayout>
-						<!--
-                        <m:footer>
-							<m:Bar>
-								<m:contentLeft>
-									<m:Button icon="sap-icon://message-popup" text="{/length}" type="Emphasized" press="handleMessageViewPress"/>
-								</m:contentLeft>
-								<m:contentRight>
-									<m:Button text="Guardar" id="idNuevoLoteRecep" press="btnNuevoLoteRecepcion" icon="sap-icon://add" type="Emphasized"/>
-									<m:Button text="Cancelar" id="idConfirmarGR" press="cancelarVolcado" icon="sap-icon://accept" type="Emphasized"/>
-								</m:contentRight>
-							</m:Bar>
-						</m:footer>
-                        -->
+						</ux:ObjectPageLayout> 
 					</m:Page>
 
 					
-                    <m:Page id="page_detalle_volcado" title="Detalle de Volcado" class="sapUiStdPage">
+                    <m:Page id="page_detalle_volcado" title="Detalle de Volcado 3" class="sapUiStdPage ">
 						<m:customHeader>
 							<m:Bar id="bar_detalle_volcado">
 								<contentMiddle>
-                                	<Title text="Vista Volcado - PROLAN" titleStyle="H5"/>
+                                	<Title text="Vista Volcado - PROLAN 3" titleStyle="H5"/>
 								</contentMiddle>
 							</m:Bar>
 						</m:customHeader>
@@ -290,7 +269,7 @@
 								</ux:ObjectPageHeader>
 							</ux:headerTitle>
 							<ux:sections>
-								<ux:ObjectPageSection id="idItemLoteRecepcion2" showTitle="false" titleUppercase="true">
+								<ux:ObjectPageSection id="idItemLoteRecepcion2" showTitle="false" titleUppercase="true" class="bg_imagen_blur">
 									<ux:subSections>
 										<ux:ObjectPageSubSection>
                                          <VBox>

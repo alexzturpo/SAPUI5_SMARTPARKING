@@ -19,7 +19,7 @@
                 <ToolbarSpacer id="space2"/>  
                 <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
             </tnt:ToolHeader>
-            <Page id="pageCabecera001" class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer" titleLevel="H2" title="REGISTRO DE PRODUCTO TERMINADO" navButtonPress=".onApp" showNavButton="true" >
+            <Page id="pageCabecera001" class="bg_imagen_blur sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer" titleLevel="H2" title="REGISTRO DE PRODUCTO TERMINADO" navButtonPress=".onApp" showNavButton="true" >
 
                 <VBox>
                                        <tab:Table id="table01comparar_ProduccionPT"

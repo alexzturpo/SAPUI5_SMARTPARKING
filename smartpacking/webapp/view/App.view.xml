@@ -2,7 +2,7 @@
     <Shell id="shell">
         <App id="app">
             <pages>
-                <Page id="page" title="{i18n>title}" showHeader="false">
+                <Page id="page" title="{i18n>title}" class="bg_imagen_blur" showHeader="false">
                     <content> 
                         <tnt:ToolHeader id="th1">  
                             <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png"/>
@@ -18,8 +18,8 @@
                                     </ComboBox>
                             <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
                         </tnt:ToolHeader>
-                            <Panel width="auto" class="sapUiResponsiveMargin">
-                                <headerToolbar>
+                            <Panel width="auto" class="sapUiResponsiveMargin" backgroundDesign="Transparent" >
+                                <headerToolbar >
                                     <OverflowToolbar>
                                         <Title text="PRODUCCIÓN FRESCOS"/>
                                     </OverflowToolbar>   
@@ -64,12 +64,12 @@
                                     </TileContent>
                                 </GenericTile>  
 	                        </Panel>
-                            <Panel width="auto" class="sapUiResponsiveMargin">
-                            <headerToolbar>
-                                <OverflowToolbar>
-                                    <Title text="PRODUCCIÓN ENVASADOS"/>
-                                </OverflowToolbar>
-                            </headerToolbar>
+                            <Panel width="auto" class="sapUiResponsiveMargin" backgroundDesign="Transparent" >
+                                <headerToolbar>
+                                    <OverflowToolbar>
+                                        <Title text="PRODUCCIÓN ENVASADOS"/>
+                                    </OverflowToolbar>
+                                </headerToolbar>
                                            
 		                        <GenericTile id="21" class="sapUiTinyMargin" header="Recepción de MP" press="onVmain2">
                                     <TileContent> 
