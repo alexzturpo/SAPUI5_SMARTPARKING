@@ -4,108 +4,90 @@
             <pages>
                 <Page id="page" title="{i18n>title}" class="bg_imagen_blur" showHeader="false">
                     <content> 
-                        <tnt:ToolHeader id="th1">  
-                            <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png"/>
-                            <ToolbarSpacer id="space1"/>  
-                                <Title id="tituloid3" level="H3" text="SMARTPACKING"/> 
-                            <ToolbarSpacer id="space2"/>  
-                            <ComboBox xmlns="sap.m" id="form02i" selectedKey="001">
-                                        <items>
-                                            <core:Item id="form012" key="001" text="Planta 1"/>
-                                            <core:Item id="form013" key="002" text="Planta 2"/>
-                                            <core:Item id="form014" key="003" text="Planta 3"/>
-                                        </items>
-                                    </ComboBox>
-                            <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
-                        </tnt:ToolHeader>
-                            <Panel width="auto" class="sapUiResponsiveMargin" backgroundDesign="Transparent" >
+                        <FlexBox id="flex_box_title" alignItems="Center" justifyContent="SpaceBetween" class="fondo_celeste">
+                            <ImageContent src="../img/sap-logo.svg" class="sapUiSmallMarginBottom"/>
+                            <ImageContent src="../img/smart_packing_logo.png" class="sapUiSmallMarginBottom"/>
+                            <ComboBox xmlns="sap.m" id="cmb_planta_centro_principal" change="f_change_centro_principal" selectedKey="1101" class="sapUiMediumMarginEnd">
+                                <items>
+                                    <core:Item key="1101" text="Frescos"/>
+                                    <core:Item key="1102" text="Envasados"/>
+                                    <core:Item key="1103" text="Packing Uva"/>
+                                </items>    
+                            </ComboBox> 
+                        </FlexBox>
+
+                            <Panel width="auto" class="sapUiResponsiveMargin " >
                                 <headerToolbar >
-                                    <OverflowToolbar>
-                                        <Title text="PRODUCCIÓN FRESCOS"/>
-                                    </OverflowToolbar>   
-                                </headerToolbar>
-                                <FlexBox>
-                                <ComboBox xmlns="sap.m" id="form02i2" selectedKey="001">
+                                    <OverflowToolbar class="bg-t ">
+                                        <Title class="txt-w" text="PRODUCCIÓN FRESCOS"/>
+                                        <ToolbarSpacer /> 
+                                        <ComboBox class="blanco" id="form02i2" selectedKey="001"> 
                                         <items>
                                             <core:Item id="form0122" key="001" text="Línea 1"/>
                                             <core:Item id="form0132" key="002" text="Línea 2"/>
                                             <core:Item id="form0142" key="003" text="Línea 3"/>
                                         </items>
                                     </ComboBox>
+                                    </OverflowToolbar>   
+                                </headerToolbar>
+                                <FlexBox> 
+                                    <GenericTile id="11" class="m-1 tileLayout " header="Volcado" press="onVmain">
+                                        <TileContent> 
+                                            <ImageContent src="sap-icon://manager-insight"/>
+                                        </TileContent>
+                                    </GenericTile> 
+                                    <GenericTile id="13" class="m-1" header="Registro de Producción PT" press="onComparar2">
+                                        <TileContent>
+                                            <ImageContent src="sap-icon://compare-2"/>
+                                        </TileContent>
+                                    </GenericTile> 
+                                    <GenericTile id="14" class="m-1"  header="Registro de Impresión de Etiquetas" press="onImprimir">
+                                        <TileContent>
+                                            <ImageContent src="sap-icon://print"/>
+                                        </TileContent>
+                                    </GenericTile> 
+                                    <GenericTile id="16" class="m-1" header="Reproceso" press="onCSV">
+                                        <TileContent>
+                                            <ImageContent src="sap-icon://repost"/>
+                                        </TileContent>
+                                    </GenericTile>  
                                 </FlexBox>
-		                        <GenericTile id="11" class="sapUiTinyMargin" header="Volcado" press="onVmain">
-                                    <TileContent> 
-                                        <ImageContent src="sap-icon://manager-insight"/>
-                                    </TileContent>
-                                </GenericTile> 
-                                <!--<GenericTile id="12" class="sapUiTinyMargin" header="Registro de Producción ST - Calibrado" press="onComparar">
-                                    <TileContent> 
-                                        <ImageContent src="sap-icon://customer-financial-fact-sheet"/>
-                                    </TileContent>
-                                </GenericTile> -->
-                                <GenericTile id="13" class="sapUiTinyMargin" header="Registro de Producción PT" press="onComparar2">
-                                    <TileContent>
-                                        <ImageContent src="sap-icon://compare-2"/>
-                                    </TileContent>
-                                </GenericTile> 
-                                <GenericTile id="14" class="sapUiTinyMargin" header="Registro de Impresión de Etiquetas" press="onImprimir">
-                                    <TileContent>
-                                        <ImageContent src="sap-icon://print"/>
-                                    </TileContent>
-                                </GenericTile> 
-                                <!-- <GenericTile id="15" class="sapUiTinyMargin" header="Paletizado" press="">
-                                    <TileContent>
-                                        <ImageContent src="sap-icon://folder-2"/>
-                                    </TileContent>
-                                </GenericTile>  -->
-                                <GenericTile id="16" class="sapUiTinyMargin" header="Reproceso" press="onCSV">
-                                    <TileContent>
-                                        <ImageContent src="sap-icon://repost"/>
-                                    </TileContent>
-                                </GenericTile>  
 	                        </Panel>
-                            <Panel width="auto" class="sapUiResponsiveMargin" backgroundDesign="Transparent" >
+
+                            <Panel width="auto" class="sapUiResponsiveMargin " >
                                 <headerToolbar>
-                                    <OverflowToolbar>
-                                        <Title text="PRODUCCIÓN ENVASADOS"/>
+                                    <OverflowToolbar class="bg-t">
+                                        <Title class="txt-w" text="PRODUCCIÓN ENVASADOS"/>
                                     </OverflowToolbar>
                                 </headerToolbar>
+                                <FlexBox wrap="Wrap" >
+                                    <GenericTile id="21" class="m-1" header="Recepción de MP" press="onVmain2">
+                                        <TileContent> 
+                                            <ImageContent src="sap-icon://manager-insight"/>
+                                        </TileContent>
+                                    </GenericTile> 
+                                    <GenericTile id="23" class="m-1" header="Registro de Producción de Intermedio" press="onProducTerminado">
+                                        <TileContent>
+                                            <ImageContent src="sap-icon://accelerated"/>
+                                        </TileContent>
+                                    </GenericTile> 
+                                    <GenericTile id="24" class="m-1" header="Registro de Producción PT" press="onAdministrarC">
+                                        <TileContent>
+                                            <ImageContent src="sap-icon://folder-2"/>
+                                        </TileContent>
+                                    </GenericTile> 
+                                    <GenericTile id="25" class="m-1" header="Registro de impresión de Etiquetas" press="onImprimir">
+                                        <TileContent>
+                                            <ImageContent src="sap-icon://print"/>
+                                        </TileContent>
+                                    </GenericTile> 
+                                    <GenericTile id="27" class="m-1" header="Reproceso" press="onCSV">
+                                        <TileContent>
+                                            <ImageContent src="sap-icon://repost"/>
+                                        </TileContent>
+                                    </GenericTile>
+                                </FlexBox>
                                            
-		                        <GenericTile id="21" class="sapUiTinyMargin" header="Recepción de MP" press="onVmain2">
-                                    <TileContent> 
-                                        <ImageContent src="sap-icon://manager-insight"/>
-                                    </TileContent>
-                                </GenericTile> 
-                                <!-- <GenericTile id="22" class="sapUiTinyMargin" header="Lotes de Recepción" press="">
-                                    <TileContent> 
-                                        <ImageContent src="sap-icon://accelerated"/>
-                                    </TileContent>
-                                </GenericTile>  -->
-                                <GenericTile id="23" class="sapUiTinyMargin" header="Registro de Producción de Intermedio" press="onProducTerminado">
-                                    <TileContent>
-                                        <ImageContent src="sap-icon://accelerated"/>
-                                    </TileContent>
-                                </GenericTile> 
-                                <GenericTile id="24" class="sapUiTinyMargin" header="Registro de Producción PT" press="onAdministrarC">
-                                    <TileContent>
-                                        <ImageContent src="sap-icon://folder-2"/>
-                                    </TileContent>
-                                </GenericTile> 
-                                <GenericTile id="25" class="sapUiTinyMargin" header="Registro de impresión de Etiquetas" press="onImprimir">
-                                    <TileContent>
-                                        <ImageContent src="sap-icon://print"/>
-                                    </TileContent>
-                                </GenericTile> 
-                                <!-- <GenericTile id="26" class="sapUiTinyMargin" header="Paletizado" press="">
-                                    <TileContent>
-                                        <ImageContent src="sap-icon://course-program"/>
-                                    </TileContent>
-                                </GenericTile>  -->
-                                <GenericTile id="27" class="sapUiTinyMargin" header="Reproceso" press="onCSV">
-                                    <TileContent>
-                                        <ImageContent src="sap-icon://repost"/>
-                                    </TileContent>
-                                </GenericTile>
 	                        </Panel>
 					</content>
                 </Page>

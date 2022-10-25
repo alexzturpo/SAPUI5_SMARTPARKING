@@ -9,69 +9,83 @@
     xmlns:uxap="sap.uxap"
     xmlns:fb="sap.ui.comp.filterbar"
     >
-   <Page id="page" title="Criterios" showHeader="false" showNavButton="true"  navButtonPress=".onApp" >
+   <Page id="page" title="Criterios" showHeader="false" class="bg_imagen_blur">
         <content> 
-            <tnt:ToolHeader id="th1">  
-                <!-- <Button id="idNavMenu2" icon="sap-icon://nav-back" press="onApp"/>   -->
-                <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png" />
-                <ToolbarSpacer id="space1"/>  
-                    <Title id="tituloid3" level="H3" text="SMARTPACKING" /> 
-                <ToolbarSpacer id="space2"/>  
-                <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
-            </tnt:ToolHeader>
-            <Page id="pageCabecera001" class="bg_imagen_blur sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer" titleLevel="H2" title="REGISTRO DE PRODUCTO TERMINADO" navButtonPress=".onApp" showNavButton="true" >
+            <FlexBox id="flex_box_title" alignItems="Center" justifyContent="SpaceBetween" class="fondo_celeste">
+                <ImageContent src="../img/sap-logo.svg" class="sapUiSmallMarginBottom"/>
 
+                <ImageContent src="../img/smart_packing_logo.png" class="sapUiSmallMarginBottom"/>
+                <ToolbarSpacer /> 
+                <!-- <MenuButton icon="sap-icon://customer" id="menu_but_panel_title" text="Bienvenido" class="texto_blanco opacidad_transparente sapUiSmallMarginEnd">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                    <Menu>
+                        <MenuItem text="Log out" icon="sap-icon://log" press="onPress_logout" />
+                    </Menu>
+                </MenuButton> -->
+            </FlexBox>
+            
+            <FlexBox class="blanco" alignItems="Center" justifyContent="Start">
+                    <Button id="back_itle" icon="sap-icon://nav-back" press=".onApp"/>  
+                    <Label class="title_negrita sapUiSmallMargin" text="REGISTRO DE PRODUCTO TERMINADO" />
+            </FlexBox>
+            <Panel width="100%" class="sapUiNoContentPadding opacidad_transparente">
                 <VBox>
-                                       <tab:Table id="table01comparar_ProduccionPT"
-        showNoData="true"
-        selectionMode="Single"
-        selectionBehavior="RowOnly"
-        visibleRowCount="7"
-        enableSelectAll="false" 
-         rows="{  path: 'Model_Table_ProduccionPT>/value' }" 
-        ariaLabelledBy="title" 
-        cellClick="rowSelectionChangeMovimiento">
-        <tab:extension>
-            <OverflowToolbar id="tab01Id006" style="Clear">
-            <!-- <SearchField search="onSearchDespacho" width="auto"/>-->
-                <ToolbarSpacer id="tab01Id007" /> 
-                <Button id="tab01Id0011" icon="sap-icon://compare" text="Notificación de Producto MP" press="onCompararC2"/>   
-            </OverflowToolbar>
-        </tab:extension>
-        <tab:columns>
-            <tab:Column id="table01Id001" sortProperty="material" filterProperty="material" autoResizable="true" width="auto">
-                <Label id="table01Id001l" textAlign="Center" wrapping ="true"  text="MATERIAL" />
-                <tab:template>  <Text id="table01Id001li" text="{Model_Table_ProduccionPT>MATNR}" wrapping="false" /> </tab:template>
-            </tab:Column>
-            <tab:Column id="table01Id002" sortProperty="articuloRFQ" filterProperty="articuloRFQ" autoResizable="true" width="auto">
-                <Label id="table01Id002l" textAlign="Center" wrapping ="true"  text="VARIEDAD" />
-                <tab:template> <Text id="table01Id002i" text="{Model_Table_ProduccionPT>ZCOD_VOL}" wrapping="false" /> </tab:template>
-            </tab:Column>
-            <tab:Column id="table01Id003" sortProperty="valorCot" filterProperty="valorCot" autoResizable="true" width="auto">
-                <Label id="table01Id003l" textAlign="Center" wrapping ="true"  text="CLIENTE" />
-                <tab:template>  <Text id="table01Id003i" text="{Model_Table_ProduccionPT>WERKS}"  wrapping="false" /> </tab:template>
-            </tab:Column>
-            <tab:Column id="table01Id004" sortProperty="cotsolicitado" filterProperty="cotsolicitado" autoResizable="true" width="auto">
-                <Label id="table01Id004l" textAlign="Center" wrapping ="true"  text="TURNO" />
-                <tab:template>  <Text id="table01Id004i" text="{Model_Table_ProduccionPT>WERKS}" wrapping="false" /> </tab:template>
-            </tab:Column>
-            <tab:Column id="table01Id005" sortProperty="fecha" filterProperty="fecha" autoResizable="true" width="auto">
-                <Label id="table01Id005l" textAlign="Center" wrapping ="true"  text="HORA" />
-                <tab:template> <Text id="table01Id005i" text="{Model_Table_ProduccionPT>WERKS}" wrapping="false"/> </tab:template>
-            </tab:Column>
-            <tab:Column id="table01Id006" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="auto">
-                <Label id="table01Id006l" textAlign="Center" wrapping ="true"  text="PALLET" />
-                <tab:template> <Text id="table01Id006i" text="{Model_Table_ProduccionPT>WERKS}" wrapping="false" /> </tab:template>
-            </tab:Column>
-            <tab:Column id="table01Id0062" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="auto">
-                <Label id="table01Id006l2" textAlign="Center" wrapping ="true"  text="ETIQUETA" />
-                <tab:template> <Text id="table01Id006i2" text="{Model_Table_ProduccionPT>WERKS}" wrapping="false" /> </tab:template>
-            </tab:Column>
-        </tab:columns>
-    </tab:Table>
-                  </VBox>                          
-                                    
-            </Page> 
+                    <tab:Table id="table01comparar_ProduccionPT"
+                    showNoData="true"
+                    selectionMode="Single"
+                    selectionBehavior="RowOnly"
+                    visibleRowCount="15"
+                    enableSelectAll="false" 
+                    rows="{  path: 'Model_Table_ProduccionPT>/value' }" 
+                    ariaLabelledBy="title" 
+                    cellClick="rowSelectionChangeMovimiento">
+                    <tab:extension>
+                        <OverflowToolbar id="tab01Id006" style="Clear">
+                            <DatePicker id="pickerTb1" width="10rem" placeholder="Ingrese" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy"/> 
+                            <ComboBox id="idAlmacentb" items="{ path: 'myParam>/Model_cmb_almacen'}" placeholder="- Almacen -" required="true"  class="opacidad_transparente">
+                                <core:Item key="{myParam>LGORT}" text="{myParam>LGORT} - {myParam>LGOBE}"/>
+                            </ComboBox>
+                            <Button icon="sap-icon://search" text="Buscar" press="OnBuscarResgistro"/> 
+                            <ToolbarSpacer id="tab01Id007" /> 
+                            <Button id="tab01Id0011" icon="sap-icon://compare" text="Notificación de Producto MP" press="onCompararC2"/>   
+                        </OverflowToolbar>
+                    </tab:extension>
+                    <tab:columns>
+                        <tab:Column id="table01Id001" sortProperty="material" filterProperty="material" autoResizable="true" width="auto">
+                            <Label id="table01Id001l" textAlign="Center" wrapping ="true"  text="MATERIAL" />
+                            <tab:template>  <Text id="table01Id001li" text="{Model_Table_ProduccionPT>MATNR}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="table01Id002" sortProperty="articuloRFQ" filterProperty="articuloRFQ" autoResizable="true" width="auto">
+                            <Label id="table01Id002l" textAlign="Center" wrapping ="true"  text="VARIEDAD" />
+                            <tab:template> <Text id="table01Id002i" text="{Model_Table_ProduccionPT>ZCOD_VOL}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="table01Id003" sortProperty="valorCot" filterProperty="valorCot" autoResizable="true" width="auto">
+                            <Label id="table01Id003l" textAlign="Center" wrapping ="true"  text="CLIENTE" />
+                            <tab:template>  <Text id="table01Id003i" text="{Model_Table_ProduccionPT>WERKS}"  wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="table01Id004" sortProperty="cotsolicitado" filterProperty="cotsolicitado" autoResizable="true" width="auto">
+                            <Label id="table01Id004l" textAlign="Center" wrapping ="true"  text="TURNO" />
+                            <tab:template>  <Text id="table01Id004i" text="{Model_Table_ProduccionPT>WERKS}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="table01Id005" sortProperty="fecha" filterProperty="fecha" autoResizable="true" width="auto">
+                            <Label id="table01Id005l" textAlign="Center" wrapping ="true"  text="HORA" />
+                            <tab:template> <Text id="table01Id005i" text="{Model_Table_ProduccionPT>WERKS}" wrapping="false"/> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="table01Id006" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="auto">
+                            <Label id="table01Id006l" textAlign="Center" wrapping ="true"  text="PALLET" />
+                            <tab:template> <Text id="table01Id006i" text="{Model_Table_ProduccionPT>WERKS}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="table01Id0062" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="auto">
+                            <Label id="table01Id006l2" textAlign="Center" wrapping ="true"  text="ETIQUETA" />
+                            <tab:template> <Text id="table01Id006i2" text="{Model_Table_ProduccionPT>WERKS}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                    </tab:columns>
+                    </tab:Table>
+                </VBox>
+            </Panel>
+
         </content>
         <footer>
 			<OverflowToolbar>

@@ -2,12 +2,13 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/Fragment",
     "sap/ui/core/BusyIndicator", 
-    "sap/ui/model/json/JSONModel"
+    "sap/ui/model/json/JSONModel",
+    'sap/m/MessageToast',
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, Fragment, BusyIndicator,JSONModel) {
+    function (Controller, Fragment, BusyIndicator,JSONModel,MessageToast) {
         "use strict";
 
         return Controller.extend("sp.smartpacking.controller.v4CotizacionInfo", {
@@ -69,60 +70,43 @@ sap.ui.define([
             },
 
 
-            // DATOS 
-            handleChange: async function () {
-                var oModel = this.getView().getModel("myParam"); 
-                console.log("handleChange"); 
-                // this.onPress_data_volcado();
-                let datos = await this._data_volcado();
-                console.log("handleChange data",datos); 
-                oModel.setProperty("/listMaterial", datos); //inserta en el modelo para la lista de data de volcado
-            },
-            _data_volcado: function () { 
-                console.log("FUNCION _data_volcado"); 
-                let url = "https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/BV/20221014/1101/0040/0"; 
-                return new Promise(function(resolver, rechazar){
-                    $.ajax({ 
-                        type: "GET",
-                        url: url,
-                        timeout: 0,
-                        headers: { "Authorization": "Basic Y29uc3VsdG9yOlJjb20yMDIyKio=" }, 
-                        success : function(data){resolver(data.ITAB[0].TI_SAL_BV)}.bind(this),
-                        error : function(error){rechazar(`ERROR  dataVolcado ${error}`)}.bind(this)
-                    });   
-                });
-            
-            },
+            // DATOS  
 
             onCompararC2: function () {
-                var oModel = this.getView().getModel("myParam"); 
+                var oModel = this.getView().getModel("myParam");                           
+                // VARIALES POST 
+                var v_fecha = this.byId("pickerDespacho1").getProperty("value"); 
+                var v_material = this.byId("idMaterial").getSelectedKey();
+                var v_almacen = this.byId("idVolcado").getSelectedKey();
+                let v_centro_principal = oModel.getProperty("/centro_principal");
+                let obj = {
+                    v_centro_principal,
+                    v_fecha,
+                    v_almacen,
+                    v_material
+                }
+                console.log(obj);
+ 
                 console.log('btnOpenAgregarVolcado');	  
                 var T_BINES_ARR = {};
                 var T_BINES = [];
                 var T_BINES_RES = [];
                 
-                var v_fecha = this.byId("pickerDespacho1").getProperty("value");  
+                var v_fechaf = this.byId("pickerDespacho1").getProperty("value");  
                 var v_pedido = this.byId("idMaterial").getSelectedKey(); 
                 var v_volcado = this.byId("idVolcado").getSelectedKey();  
 
                 var row = {};  
-                row.fecha = v_fecha;
+                row.fecha = v_fechaf;
                 row.pedido = v_pedido;
                 row.volcado = v_volcado; 
 
-                T_BINES.push(row);   
-                console.log('T_BINES',T_BINES); 
-
+                T_BINES.push(row);    
                 T_BINES_ARR.VOLCADO = T_BINES;
-                T_BINES_RES = JSON.stringify(T_BINES_ARR);
-                
-                var url;             
-                // url = "https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/CV/20221014/1101/0040/0"; 
-
-                console.log('T_BINES_RES', T_BINES_RES); 
+                T_BINES_RES = JSON.stringify(T_BINES_ARR);  
 
                 BusyIndicator.show(0); 
-                url = "https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/BV/20221014/1101/0040/0";
+                let url = `https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/RMPE/${v_fecha}/${v_centro_principal}/${v_almacen}/0`;
                 console.log('url2: ', url); 
                 BusyIndicator.show(0);
                 $.ajax({
@@ -136,13 +120,21 @@ sap.ui.define([
                         BusyIndicator.hide();    
                         console.log("result",result);
                         
-                        var data = {value: result.ITAB[0].TI_VOLC};
+                        var data = {value: result.ITAB};
                         console.log('data actual',data);
                         // console.log(data);
                         var oModel = new sap.ui.model.json.JSONModel();
                         oModel.setData(data); 
                         this.getView().byId("table01comparar_recepcionMP").setModel(oModel, "Model_Table_RecepcionMP"); 
-                        // this.byId("d2CompararID").close();   
+                        // this.byId("d2CompararID").close();  
+                        
+                        // BusyIndicator.hide();    
+                        // console.log("result",result);
+                        // var data = {value: result.ITAB};
+                        // console.log('data actual',data);
+                        // var oModel = new sap.ui.model.json.JSONModel(); 
+                        // oModel.setData(data); 
+                        // this.getView().byId("table01comparar").setModel(oModel, "Model_Table_Registro_ProduccionPT"); 
                         
                     }.bind(this),
                     error: function (XMLHttpRequest, textStatus, errorThrown) {

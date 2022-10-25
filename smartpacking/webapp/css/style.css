@@ -12,23 +12,68 @@
     object-fit: cover;
     /* position: absolute;  */
 }
-.sapMPanel .sapMPanelHdr, .sapMPanel .sapMTB.sapMPanelHeaderTB { 
-    background: white;
-    border-radius: 1rem;
-}
+
+
+/* .sapMPanelContent {
+    background-color: #405060 !important;
+    border-color: #405060 !important;
+} */
+
+/* .sapUiFormResGrid {
+    background-color: #405060 !important;
+    border-color: #405060 !important;
+} */
+
 .blanco{
-    background-color: white;
+    background-color: white !important;
+}
+.oscuro{
+    background-color: #405060 !important;
+}
+.fondo_celeste{
+    background-color: #405060 !important;
+}
+.texto_blanco{
+    color: white  !important;
 }
 
-/* main  */
-/* .sapUxAPObjectPageWrapperTransform {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%), url("../img/fondo2.jpeg");
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center center;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0); 
-    object-fit: cover;
-}  */
+/*.sapUiIcon {
+    color: red !important;
+}*/
+
+.title_negrita{
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.opacidad_transparente {
+    opacity: 0.9;
+}
+
+.m-1{
+    margin: 0.2rem !important;
+}
+.p-2{
+    box-sizing: border-box;
+    padding: 0.6rem 2rem !important;
+}
+.txt-w{
+    color: white !important; 
+    font-size: 16px;
+    font-weight: bold;
+    /* box-shadow: 9px 10px 15px 4px #405060; */
+
+}
+.lb-w{
+    color: white !important;  
+    font-weight: bold;
+}
+.btn-w{
+    border-radius: 2px !important;
+
+}
+/* .bg-t{ 
+    background: #405060 !important;
+} */

@@ -15,7 +15,7 @@ sap.ui.define([
             },
             onInit() {
                 var fechaActual = new Date();
-                this.getView().byId("pickerDespacho1").setDateValue(fechaActual);
+                //this.getView().byId("cmb_fecha_reproceso").setDateValue(fechaActual);
 
             },
             onVmain: function () {

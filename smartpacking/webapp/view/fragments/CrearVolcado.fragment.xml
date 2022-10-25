@@ -31,7 +31,7 @@
                         </f:FormElement>
                         <f:FormElement  id="form_element_registro_volcado_fecha" label="Fecha">
                             <f:fields>
-                                <DatePicker id="datepicker_registro_volcado_fecha" value="" valueFormat="dd/MM/yyyy" displayFormat="dd/MM/yyyy"/>
+                                <DatePicker id="datepicker_registro_volcado_fecha" value="" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy"/>
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement  id="form_element_registro_volcado_hora" label="Hora">

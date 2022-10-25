@@ -38,7 +38,7 @@
                         <f:formElements>
                             <f:FormElement label="FECHA DE PRD.">
                                 <f:fields>
-                                    <DatePicker value="" id="picker2" change="handleChange"/>
+                                    <DatePicker id="picker2" placeholder="Ingrese" change="handleChange" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy"/>
                                 </f:fields>
                             </f:FormElement>
                         </f:formElements>

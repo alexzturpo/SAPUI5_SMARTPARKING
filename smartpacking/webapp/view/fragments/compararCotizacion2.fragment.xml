@@ -47,7 +47,7 @@
                     <f:formElements>
                         <f:FormElement label="Pedido">
                             <f:fields>
-                                <ComboBox id="idMaterial" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
+                                <ComboBox id="idPedido" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
                         <core:Item id="itemMaterial" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
                     </ComboBox>
                             </f:fields>
@@ -87,8 +87,24 @@
                     <f:formElements>
                         <f:FormElement label="Etiqueta">
                             <f:fields>
-                                <ComboBox id="idEtiqueta" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
+                                <Input id="idEtiqueta" value=""/>
+                                <!-- <ComboBox id="idEtiqueta" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
                                     <core:Item id="itemEtiqueta" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                                </ComboBox> -->
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer> 
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement label="Material">
+                            <f:fields>
+                                <!-- <Input id="" value=""/> -->
+                                <!-- <ComboBox id="idMaterial" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
+                                    <core:Item id="itemEtiqueta" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                                </ComboBox> -->
+                                <ComboBox id="idMaterial" items="{ path: 'myParam>/Model_cmb_material'}" placeholder="- Seleccione -" required="true" width="100%" class="opacidad_transparente">
+                                    <core:Item key="{myParam>MATNR}" text="{myParam>MATNR} - {myParam>MAKTX}"/>
                                 </ComboBox>
                             </f:fields>
                         </f:FormElement>

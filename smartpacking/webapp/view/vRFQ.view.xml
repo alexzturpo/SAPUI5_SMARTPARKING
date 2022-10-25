@@ -10,53 +10,56 @@
     xmlns:fb="sap.ui.comp.filterbar"
     >
     
-   <Page id="page" title="Criterios" showHeader="false" showNavButton="true"  navButtonPress=".onApp"  > 
+   <Page id="page" title="Criterios" showHeader="false" showNavButton="true" class="bg_imagen_blur" navButtonPress=".onApp"  > 
         <content> 
-            <tnt:ToolHeader id="th1">  
-                <!-- <Button id="idNavMenu2" icon="sap-icon://nav-back" press="onApp"/>   -->
-                <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png" />
-                <ToolbarSpacer id="space1"/>  
-                    <Title id="tituloid3" level="H3" text="SMARTPACKING" /> 
-                <ToolbarSpacer id="space2"/>  
-                <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
-            </tnt:ToolHeader>
-            <Page id="pageCabecera001" titleLevel="H2"  class=" bg_imagen_blur sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer"
-                title="REPROCESO" navButtonPress=".onApp" showNavButton="true" >
-            <content>
-                <layout:VerticalLayout id="vmainId005" class="sapUiMediumMarginEnd" width="100%">
-                            <fb:FilterBar id="Fb01Id001" reset="onReset" search="onSearch" showRestoreButton="true" >
-                            <fb:filterGroupItems>
-                                <fb:FilterGroupItem id="Fbi01I123" groupName="G1" name="A3" label="Fecha" partOfCurrentVariant="true" visibleInFilterBar="true">
-                                    <fb:control>
-                                        <DatePicker id="pickerDespacho1" placeholder="Ingrese" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy"/> 
-                                    </fb:control>
-                                </fb:FilterGroupItem>
-                                <fb:FilterGroupItem id="Fbi01Id003" groupName="G1" groupTitle="Group1" name="A1" label="Material" visibleInFilterBar="true">
-                                    <fb:control>
-                                        <ComboBox id="idEtiqueta" items="{/listMaterial}" placeholder="- Seleccione -" required="true" width="100%">
-																<core:Item id="itemEtiqueta" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
-															</ComboBox>
-                                    </fb:control>
-                                </fb:FilterGroupItem>                          
-                                <fb:FilterGroupItem id="Fbi01Id002" groupName="G0" name="B" label="Cod. Pallet"   partOfCurrentVariant="true" visibleInFilterBar="true">
-                                    <fb:control>
-                                        <ComboBox id="idEtiqueta3" items="{/listMaterial}" placeholder="- Seleccione -" required="true" width="100%">
-																<core:Item id="itemEtiqueta3" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
-															</ComboBox>
-                                    </fb:control>
-                                </fb:FilterGroupItem>                            
-                                
-                                
-                            </fb:filterGroupItems>                        
-                        </fb:FilterBar>
-                    </layout:VerticalLayout>
-            </content>
-		    <content>
-				
+            <FlexBox id="flex_box_title" alignItems="Center" justifyContent="SpaceBetween" class="fondo_celeste">
+                <ImageContent src="../img/sap-logo.svg" class="sapUiSmallMarginBottom"/>
+                <ImageContent src="../img/smart_packing_logo.png" class="sapUiSmallMarginBottom"/>
+                <ToolbarSpacer /> 
 
-		    </content>
-		
-	</Page>
+                <!-- <MenuButton icon="sap-icon://customer" id="menu_but_panel_title" text="Bienvenido" class="texto_blanco opacidad_transparente sapUiSmallMarginEnd">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                    <Menu>
+                        <MenuItem text="Log out" icon="sap-icon://log" press="onPress_logout" />
+                    </Menu>
+                </MenuButton> -->
+            </FlexBox>
+
+            
+            <FlexBox class="blanco" alignItems="Center" justifyContent="Start">
+                    <Button id="back_itle" icon="sap-icon://nav-back" press=".onApp"/>  
+                    <Label class="title_negrita sapUiSmallMargin" text="REPROCESO" />
+            </FlexBox>
+            <Panel width="100%" class="bg_imagen_blur sapUiNoContentPadding opacidad_transparente">
+                <layout:VerticalLayout width="100%">
+                    <fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" >
+                        <fb:filterGroupItems>
+                            <fb:FilterGroupItem groupName="G1" name="A3" label="Fecha" visibleInFilterBar="true">
+                                <fb:control>
+                                    <DatePicker id="cmb_fecha_reproceso" placeholder="Ingrese" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy"/> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="G1" groupTitle="Group1" name="A1" label="Material" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox id="cmb_material_reproceso" items="{/listMaterial}" placeholder="- Seleccione -" required="true" width="100%">
+                                        <core:Item key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                                    </ComboBox>
+                                </fb:control>
+                            </fb:FilterGroupItem>                          
+                            <fb:FilterGroupItem groupName="G0" name="B" label="Cod. Pallet" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox id="cmb_cod_palet_reproceso" items="{/listMaterial}" placeholder="- Seleccione -" required="true" width="100%">
+                                        <core:Item key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                                    </ComboBox>
+                                </fb:control>
+                            </fb:FilterGroupItem>                            
+                            
+                        </fb:filterGroupItems>                        
+                    </fb:FilterBar>
+                </layout:VerticalLayout>
+            </Panel>		    
     </content>
     <footer>
 			<OverflowToolbar>

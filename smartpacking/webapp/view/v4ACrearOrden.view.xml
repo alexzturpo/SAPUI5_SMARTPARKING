@@ -9,21 +9,31 @@
     xmlns:uxap="sap.uxap"
     xmlns:fb="sap.ui.comp.filterbar"
     >
-    <Page id="page" title="Criterios" showHeader="false" showNavButton="true"  navButtonPress=".onApp" >
+    <Page id="page" title="Criterios" showHeader="false" class="bg_imagen_blur" >
         <content> 
-            <tnt:ToolHeader id="th1">  
-                <!-- <Button id="idNavMenu2" icon="sap-icon://nav-back" press="onApp"/>   -->
-                <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png" />
-                <ToolbarSpacer id="space1"/>  
-                    <Title id="tituloid3" level="H3" text="SMARTPACKING" /> 
-                <ToolbarSpacer id="space2"/>  
-                <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
-            </tnt:ToolHeader>
-            <Page id="pageCabecera001" class="bg_imagen_blur sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer" titleLevel="H2" title="RECEPCIÓN DE MP" navButtonPress=".onApp" showNavButton="true" >
+            <FlexBox id="flex_box_title" alignItems="Center" justifyContent="SpaceBetween" class="fondo_celeste">
+                <ImageContent src="../img/sap-logo.svg" class="sapUiSmallMarginBottom"/>
 
+                <ImageContent src="../img/smart_packing_logo.png" class="sapUiSmallMarginBottom"/>
+                <ToolbarSpacer /> 
+                <!-- <MenuButton icon="sap-icon://customer" id="menu_but_panel_title" text="Bienvenido" class="texto_blanco opacidad_transparente sapUiSmallMarginEnd">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                    <Menu>
+                        <MenuItem text="Log out" icon="sap-icon://log" press="onPress_logout" />
+                    </Menu>
+                </MenuButton> -->
+            </FlexBox>
+            
+            <FlexBox class="blanco" alignItems="Center" justifyContent="Start">
+                    <Button id="back_itle" icon="sap-icon://nav-back" press=".onApp"/>  
+                    <Label class="title_negrita sapUiSmallMargin" text="RECEPCIÓN DE MP" />
+            </FlexBox>
+            <Panel width="100%" class="sapUiNoContentPadding opacidad_transparente">
                 <f:Form id="FormChange480_12120Dual" editable="true" class="blanco">
                     <f:title>
-                        <core:Title text="Nuevo Registro" />
+                        <core:Title text="Nuevo Registro" class="texto_blanco" />
                     </f:title>
                     <f:layout>
                         <f:ResponsiveGridLayout
@@ -46,7 +56,7 @@
                             <f:formElements>
                                 <f:FormElement label="Fecha">
                                     <f:fields>
-                                        <DatePicker id="pickerDespacho1" placeholder="Ingrese" change="handleChange" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy"/>
+                                        <DatePicker id="pickerDespacho1" placeholder="Ingrese"  valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy"/>
                                     </f:fields>
                                 </f:FormElement>
                             </f:formElements>
@@ -55,9 +65,12 @@
                             <f:formElements>
                                 <f:FormElement label="Material">
                                     <f:fields>
-                                        <ComboBox id="idMaterial" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
-                                <core:Item id="itemMaterial" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
-                            </ComboBox>
+                                        <!-- <ComboBox id="idMaterial" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
+                                            <core:Item id="itemMaterial" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                                        </ComboBox> -->
+                                        <ComboBox id="idMaterial" items="{ path: 'myParam>/Model_cmb_material'}" placeholder="- Seleccione -" required="true" width="100%" class="opacidad_transparente">
+                                            <core:Item key="{myParam>MATNR}" text="{myParam>MATNR} - {myParam>MAKTX}"/>
+                                        </ComboBox>
                                     </f:fields>
                                 </f:FormElement>
                             </f:formElements>
@@ -66,8 +79,11 @@
                             <f:formElements>
                                 <f:FormElement label="Almacén">
                                     <f:fields>
-                                        <ComboBox id="idVolcado" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
+                                        <!-- <ComboBox id="idVolcado" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
                                             <core:Item id="itemVolcado" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                                        </ComboBox> -->
+                                        <ComboBox id="idVolcado" items="{ path: 'myParam>/Model_cmb_almacen'}" placeholder="- Seleccione -" required="true" width="100%" class="opacidad_transparente">
+                                            <core:Item key="{myParam>LGORT}" text="{myParam>LGORT} - {myParam>LGOBE}"/>
                                         </ComboBox>
                                     </f:fields>
                                 </f:FormElement>
@@ -76,12 +92,13 @@
                         
                     </f:formContainers>
                 </f:Form>
+
                 <VBox>
                     <tab:Table id="table01comparar_recepcionMP"
                         showNoData="true"
                         selectionMode="Single"
                         selectionBehavior="RowOnly"
-                        visibleRowCount="7"
+                        visibleRowCount="15"
                         enableSelectAll="false" 
                         rows="{  path: 'Model_Table_RecepcionMP>/value' }"  
                         ariaLabelledBy="title" 
@@ -121,14 +138,8 @@
                             </tab:Column>
                         </tab:columns>
                     </tab:Table>
-                </VBox>                          
-                                    
-            </Page> 
+                </VBox>
+            </Panel>
         </content>
-        <footer>
-			<OverflowToolbar>
-					<ToolbarSpacer />
-			</OverflowToolbar>
-		</footer>
     </Page>
 </mvc:View>

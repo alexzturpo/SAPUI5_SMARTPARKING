@@ -11,33 +11,31 @@
     >
     <Page id="page" title="Criterios" showHeader="false" showNavButton="true"  navButtonPress=".onApp" >
         <content> 
-            <tnt:ToolHeader id="th1">  
-                <!-- <Button id="idNavMenu2" icon="sap-icon://nav-back" press="onApp"/>   -->
-                <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png" />
-                <ToolbarSpacer id="space1"/>  
-                    <Title id="tituloid3" level="H3" text="SMARTPACKING" /> 
-                <ToolbarSpacer id="space2"/>  
-                <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
-            </tnt:ToolHeader>
+            <FlexBox id="flex_box_title" alignItems="Center" justifyContent="SpaceBetween" class="fondo_celeste">
+                <ImageContent src="../img/sap-logo.svg" class="sapUiSmallMarginBottom"/>
+
+                <ImageContent src="../img/smart_packing_logo.png" class="sapUiSmallMarginBottom"/>
+                <ToolbarSpacer /> 
+
+                <!-- <MenuButton icon="sap-icon://customer" id="menu_but_panel_title" text="Bienvenido" class="texto_blanco opacidad_transparente sapUiSmallMarginEnd">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                    <Menu>
+                        <MenuItem text="Log out" icon="sap-icon://log" press="onPress_logout" />
+                    </Menu>
+                </MenuButton> -->
+            </FlexBox>
+
             <Page id="pageCabecera001" titleLevel="H2"  class="altura"
                 title="" navButtonPress=".onApp" showNavButton="true" >
                 <headerContent> 
-                    <!-- <HBox id="vccId001">
-                        <Label id="vmainId013" class="sapUiMediumMargin"  textAlign="Center" wrapping ="true"  text="RFQ: " />
-                        <Input  id="vccIdRFQ01" value="70000823" placeholder="Ingrese RFQ" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
-                    </HBox>  -->
-                    <!-- <Button id="btn" text="Comleto" press="onAppRealcionadas"/>    -->
                 </headerContent> 
                 <uxap:ObjectPageLayout id="conOpl" upperCaseAnchorBar="false">
                     <uxap:headerTitle>
                         <uxap:ObjectPageHeader id="conOp" 
                                         objectTitle="REGISTRO DE MATERIAL SEMIELABORADO - CALIBRADO"
                                         objectSubtitle="Resumen"  >
-                            <!-- <uxap:actions>
-                                <uxap:ObjectPageHeaderActionButton icon="sap-icon://edit" text="Editar" importance="Medium" tooltip="Editar"/>
-                                <uxap:ObjectPageHeaderActionButton icon="sap-icon://save" text="Publicar" tooltip="save" press="onPublicar"/> 
-                                <uxap:ObjectPageHeaderActionButton icon="sap-icon://action" text="action" importance="Low" tooltip="action" press="on01"/> 
-                            </uxap:actions>  -->
                         </uxap:ObjectPageHeader>
                     </uxap:headerTitle>
                     <uxap:headerContent>
