@@ -4,11 +4,12 @@ sap.ui.define([
     "sap/ui/core/BusyIndicator", 
     "sap/ui/model/json/JSONModel",
     'sap/m/MessageToast',
+    "sap/ui/export/Spreadsheet"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, Fragment, BusyIndicator,JSONModel,MessageToast) {
+    function (Controller, Fragment, BusyIndicator,JSONModel,MessageToast,Spreadsheet) {
         "use strict";
 
         return Controller.extend("sp.smartpacking.controller.v4CotizacionInfo", {
@@ -106,6 +107,7 @@ sap.ui.define([
                 T_BINES_RES = JSON.stringify(T_BINES_ARR);  
 
                 BusyIndicator.show(0); 
+                // https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/RMPE/20221023/1102/0040/0
                 let url = `https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/RMPE/${v_fecha}/${v_centro_principal}/${v_almacen}/0`;
                 console.log('url2: ', url); 
                 BusyIndicator.show(0);
@@ -125,16 +127,7 @@ sap.ui.define([
                         // console.log(data);
                         var oModel = new sap.ui.model.json.JSONModel();
                         oModel.setData(data); 
-                        this.getView().byId("table01comparar_recepcionMP").setModel(oModel, "Model_Table_RecepcionMP"); 
-                        // this.byId("d2CompararID").close();  
-                        
-                        // BusyIndicator.hide();    
-                        // console.log("result",result);
-                        // var data = {value: result.ITAB};
-                        // console.log('data actual',data);
-                        // var oModel = new sap.ui.model.json.JSONModel(); 
-                        // oModel.setData(data); 
-                        // this.getView().byId("table01comparar").setModel(oModel, "Model_Table_Registro_ProduccionPT"); 
+                        this.getView().byId("table01comparar_recepcionMP").setModel(oModel, "Model_Table_RecepcionMP");  
                         
                     }.bind(this),
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -148,6 +141,71 @@ sap.ui.define([
                 
                 
 
+            },
+            // descargar datos de la tabla  
+            onDownloadTable: function () {
+                console.log("onDownloadTable");
+                var oCols, OTablaDowload, oSettings, oSheet;
+                var nombreArchivo = new Date().toLocaleString("es-ES");  
+                
+                oCols = this.createColumnConfig(); 
+                OTablaDowload = this.getView().byId("table01comparar_recepcionMP").getModel("Model_Table_RecepcionMP").getData(); 
+                console.log("OTablaDowload 2",OTablaDowload.value);  
+                oSettings = {
+                    workbook: {
+                        columns: oCols
+                    },
+                    dataSource: OTablaDowload.value,
+                    fileName: `Activos ${nombreArchivo}`
+                };
+    
+                oSheet = new Spreadsheet(oSettings);
+                oSheet.build()
+                    .then(function () {
+                        this.getView().setBusy(false);
+                        sap.m.MessageToast.show("Se realizó la exportación con éxito.");
+                    }.bind(this))
+                    .finally(function () {
+                        this.getView().setBusy(false);
+                        oSheet.destroy();
+                    }.bind(this));
+            },
+    
+            createColumnConfig: function () { 
+                var oCols = [];
+    
+                oCols.push({
+                    label: 'CÓDIGO MATERIAL',
+                    property: 'ZCOD_VOL',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'DESCRIPCIÓN',
+                    property: 'MATNR',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'CALIBRE',
+                    property: 'WERKS',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'LOTE DE RECEP.',
+                    property: 'WERKS',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'CANTIDAD',
+                    property: 'MENGE',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'PESO',
+                    property: 'WERKS',
+                    type: 'string'
+                });
+    
+                return oCols;
             },
         });
     });

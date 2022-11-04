@@ -53,6 +53,7 @@
                                 <Button icon="sap-icon://search" text="Buscar" press="OnBuscarResgistroPT"/>   
                                 <ToolbarSpacer /> 
                                 <Button icon="sap-icon://compare" text="Nuevo Registro de Producto Terminado" press="onCompararC2"/>   
+                                <Button icon="sap-icon://download" text="Descargar tabla" press="onDownloadTable"/>   
                             </OverflowToolbar>
                         </tab:extension>
                         <tab:columns>

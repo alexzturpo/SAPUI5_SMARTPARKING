@@ -4,12 +4,13 @@ sap.ui.define([
     "sap/ui/core/Core",
     "sap/ui/core/BusyIndicator", 
     "sap/ui/model/json/JSONModel",
-    'sap/m/MessageToast'
+    'sap/m/MessageToast',
+    "sap/ui/export/Spreadsheet"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, Fragment, Core, BusyIndicator,JSONModel,MessageToast) {
+    function (Controller, Fragment, Core, BusyIndicator,JSONModel,MessageToast,Spreadsheet) {
         "use strict";
 
         return Controller.extend("sp.smartpacking.controller.vProveedorRFQ", {
@@ -17,7 +18,7 @@ sap.ui.define([
                 return sap.ui.core.UIComponent.getRouterFor(this);
             },
             onInit() {
-                console.log("onInit"); 
+                // console.log("onInit"); 
                 
             },
             onAfterRendering: async function () {
@@ -51,8 +52,8 @@ sap.ui.define([
                     this.d2Comparar.then(function (oDialog) {
                         oDialog.open(); 
                     });
-                    var fechaActual = new Date();
-                    this.getView().byId("picker2").setDateValue(fechaActual);
+                    //var fechaActual = new Date();
+                    //this.getView().byId("picker2").setDateValue(fechaActual);
                     // Core.byId("picker2").setDateValue(fechaActual);
                     // this.getRouter().getTargets().display("TargetvMain");
                 }else{ 
@@ -82,7 +83,7 @@ sap.ui.define([
             _data_volcado: function (v_fecha,v_centro_principal,v_almacen) { 
                 console.log("FUNCION _data_volcado"); 
                 // let url = `https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/BV/20221014/1101/0040/0`; 
-                let url = `https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/BV/${v_fecha}/${v_centro_principal}/${v_almacen}/0`; 
+                let url = `https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/NPED/${v_fecha}/${v_centro_principal}/${v_almacen}/0`; 
                 console.log("_data_volcado URL",url); 
 
                 return new Promise(function(resolver, rechazar){
@@ -91,7 +92,7 @@ sap.ui.define([
                         url: url,
                         timeout: 0,
                         headers: { "Authorization": "Basic Y29uc3VsdG9yOlJjb20yMDIyKio=" }, 
-                        success : function(data){resolver(data.ITAB[0].TI_SAL_BV)}.bind(this),
+                        success : function(data){resolver(data.ITAB[0])}.bind(this),
                         error : function(error){rechazar(`ERROR  dataVolcado ${error}`)}.bind(this)
                     });   
                 });
@@ -193,8 +194,8 @@ sap.ui.define([
                 }
                 console.log(obj);
 
-
-                let url = `https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/BPTE/${v_fecha}/${v_cp}/${v_almacen}/0`;
+                // https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/BPTF/20221023/1101/0030/0
+                let url = `https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/BPTF/${v_fecha}/${v_cp}/${v_almacen}/0`;
                 console.log("URL GET BUSCAR", url);
                 BusyIndicator.show(0);
                 $.ajax({
@@ -226,6 +227,83 @@ sap.ui.define([
                         console.log(XMLHttpRequest);
                     }
                 });
+            },
+
+            // descargar datos de la tabla  
+            onDownloadTable: function () {
+                console.log("onDownloadTable");
+                var oCols, OTablaDowload, oSettings, oSheet;
+                var nombreArchivo = new Date().toLocaleString("es-ES");  
+                
+                oCols = this.createColumnConfig(); 
+                OTablaDowload = this.getView().byId("table01comparar").getModel("Model_Table_Registro_ProduccionPT").getData(); 
+                console.log("OTablaDowload 2",OTablaDowload.value);  
+    
+                oSettings = {
+                    workbook: {
+                        columns: oCols
+                    },
+                    dataSource: OTablaDowload.value,
+                    fileName: `Activos ${nombreArchivo}`
+                };
+    
+                oSheet = new Spreadsheet(oSettings);
+                oSheet.build()
+                    .then(function () {
+                        this.getView().setBusy(false);
+                        sap.m.MessageToast.show("Se realizó la exportación con éxito.");
+                    }.bind(this))
+                    .finally(function () {
+                        this.getView().setBusy(false);
+                        oSheet.destroy();
+                    }.bind(this));
+            },
+    
+            createColumnConfig: function () { 
+                var oCols = [];
+    
+                oCols.push({
+                    label: 'MATERIAL',
+                    property: 'MATNR',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'ALMACEN',
+                    property: 'ZCOD_VOL',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'CANTIDAD',
+                    property: 'MENGE',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'COD.PALLET',
+                    property: 'ZCOD_VOL',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'CLIENTE',
+                    property: 'WERKS',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'ETIQUETA',
+                    property: 'WERKS',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'PEDIDO',
+                    property: 'WERKS',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'LOTE DE PRD.',
+                    property: 'WERKS',
+                    type: 'string'
+                });
+    
+                return oCols;
             },
              
         });

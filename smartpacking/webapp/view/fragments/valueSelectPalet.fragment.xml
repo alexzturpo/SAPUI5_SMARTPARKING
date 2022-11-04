@@ -1,0 +1,65 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+    xmlns:tab="sap.ui.table" 
+	xmlns:core="sap.ui.core">
+    <tab:Table 
+        showNoData="true"
+        selectionMode="Single"
+        selectionBehavior="RowOnly"
+        visibleRowCount="15"
+        enableSelectAll="false" 
+        rows="{  path: 'Model_Table_ProduccionPT>/value' }" 
+        ariaLabelledBy="title" 
+        cellClick="rowSelectionChangeMovimiento">
+        <tab:extension>
+            <OverflowToolbar style="Clear"> 
+                <ToolbarSpacer  /> 
+                <Button  icon="sap-icon://compare" text="Notificación de Producto MP" press="onCompararC2"/>  
+            </OverflowToolbar>
+        </tab:extension>
+        <tab:columns>
+            <tab:Column sortProperty="material" filterProperty="material" autoResizable="true" width="auto">
+                <Label textAlign="Center" wrapping ="true"  text="MATERIAL" />
+                <tab:template>  
+                    <Text text="{Model_Table_ProduccionPT>MATNR}" wrapping="false" /> 
+                </tab:template>
+            </tab:Column>
+        </tab:columns>
+    </tab:Table>
+	<!-- <TableSelectDialog
+		noDataText="No Products Found"
+		title="Seleccione un palet"
+		search=".handleSearch"
+		confirm=".handleValueHelpClose"
+		cancel=".handleValueHelpClose"
+		showClearButton="false"
+		items="{/listaPalets}">
+		<ColumnListItem >
+			<cells>
+				<ObjectIdentifier title="{LGORT}" text="{WERKS}" />
+				<Text text="{LGOBE}" />
+				<Text text="hola" /> 
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="12em">
+				<header>
+					<Text text="Palet" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Material" />
+				</header>
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="End">
+				<header>
+					<Text text="Descipcion" />
+				</header>
+			</Column> 
+		</columns>
+	</TableSelectDialog> -->
+</core:FragmentDefinition>

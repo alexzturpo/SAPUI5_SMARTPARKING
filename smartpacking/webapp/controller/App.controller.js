@@ -55,9 +55,7 @@ sap.ui.define(
 
         // importar data de campos
         importData: async function (v_centro_principal) {
-            console.log("importData");  
-            // var oModel = this.getView().getModel("myParam");                          
-            // let v_centro_principal = oModel.getProperty("/centro_principal") 
+            console.log("importData");   
             console.log("centro_principal", v_centro_principal);
 
             // importando data de MATERIAL

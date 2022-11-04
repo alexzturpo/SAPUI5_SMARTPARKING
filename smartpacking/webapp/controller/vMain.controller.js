@@ -3,11 +3,12 @@ sap.ui.define([
     "sap/ui/core/Fragment",
     "sap/ui/core/BusyIndicator",
     'sap/m/MessageToast',
+    "sap/ui/export/Spreadsheet"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, Fragment, BusyIndicator, MessageToast) {
+    function (Controller, Fragment, BusyIndicator, MessageToast, Spreadsheet) {
         "use strict";
 
         return Controller.extend("sp.smartpacking.controller.vMain", {
@@ -340,11 +341,20 @@ sap.ui.define([
             btnListGR: function () {
                 this.getSplitAppObj().to(this.createId("page_vista_volcado"));
             },
-            rowSelectionChangeVolcadosGenerados: function () {
+            rowSelectionChangeVolcadosGenerados: function (e) {
                 // var url;            
                 // console.log('a');
                 // url = "https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/DV/20221014/1101/0040/VL00001";
                 // console.log(url);
+
+                var oTable = this.getView().byId("table_volcados_generados")
+                var idx = e.getParameter('rowIndex');
+                var cxt = oTable.getContextByIndex(idx);
+                var path = cxt.sPath;
+                var obj = oTable.getModel("Model_Table_List_Volcado_Generados").getProperty(path);
+                console.log(obj.ZCOD_VOL);
+                
+                
 
                 var oModel = this.getView().getModel("myParam");  
                 let v_centro_principal = oModel.getProperty("/centro_principal");
@@ -353,7 +363,7 @@ sap.ui.define([
                 var v_almacen = this.byId("cmb_almacen_buscar_volcado").getSelectedKey();
                 var url;            
                 console.log('a');
-                url = `https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/DV/${v_fecha}/${v_centro_principal}/${v_almacen}/VL00001`;
+                url = `https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/DV/${v_fecha}/${v_centro_principal}/${v_almacen}/${obj.ZCOD_VOL}`;
                 console.log(url);
 
                 BusyIndicator.show(0);
@@ -462,5 +472,119 @@ sap.ui.define([
             //     });
                 
             // }
+
+            // descargar datos de la tabla  
+            
+            onDownloadTable: function () {
+                console.log("onDownloadTable");
+                var oCols, OTablaDowload, oSettings, oSheet;
+                var nombreArchivo = new Date().toLocaleString("es-ES");  
+                
+                oCols = this.createColumnConfig(); 
+                OTablaDowload = this.getView().byId("table_volcados_generados").getModel("Model_Table_List_Volcado_Generados").getData(); 
+                console.log("OTablaDowload 2",OTablaDowload.value);  
+    
+                oSettings = {
+                    workbook: {
+                        columns: oCols
+                    },
+                    dataSource: OTablaDowload.value,
+                    fileName: `Activos ${nombreArchivo}`
+                };
+    
+                oSheet = new Spreadsheet(oSettings);
+                oSheet.build()
+                    .then(function () {
+                        this.getView().setBusy(false);
+                        sap.m.MessageToast.show("Se realizó la exportación con éxito.");
+                    }.bind(this))
+                    .finally(function () {
+                        this.getView().setBusy(false);
+                        oSheet.destroy();
+                    }.bind(this));
+            },
+    
+            createColumnConfig: function () { 
+                var oCols = [];
+    
+                oCols.push({
+                    label: 'Código',
+                    property: 'ZCOD_VOL',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'Descripción',
+                    property: 'CHARG',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'Cantidad',
+                    property: 'MENGE',
+                    type: 'string'
+                }); 
+    
+                return oCols;
+            }, 
+
+             // descargar datos de la tabla  
+            onDownloadTableGenerado: function () {
+                console.log("onDownloadTable");
+                var oCols, OTablaDowload, oSettings, oSheet;
+                var nombreArchivo = new Date().toLocaleString("es-ES");  
+                
+                oCols = this.createColumnConfigGenerado(); 
+                OTablaDowload = this.getView().byId("table_detalle_volcado").getModel("Model_Table_List_Detalle_Volcado_Generados").getData(); 
+                console.log("OTablaDowload 2",OTablaDowload.value);  
+    
+                oSettings = {
+                    workbook: {
+                        columns: oCols
+                    },
+                    dataSource: OTablaDowload.value,
+                    fileName: `Activos ${nombreArchivo}`
+                };
+    
+                oSheet = new Spreadsheet(oSettings);
+                oSheet.build()
+                    .then(function () {
+                        this.getView().setBusy(false);
+                        sap.m.MessageToast.show("Se realizó la exportación con éxito.");
+                    }.bind(this))
+                    .finally(function () {
+                        this.getView().setBusy(false);
+                        oSheet.destroy();
+                    }.bind(this));
+            },
+    
+            createColumnConfigGenerado: function () { 
+                var oCols = [];
+    
+                oCols.push({
+                    label: 'Código de Volcado',
+                    property: 'ZCOD_VOL',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'Cód. de Material',
+                    property: 'MATNR',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'Descripción',
+                    property: 'CHARG',
+                    type: 'string'
+                }); 
+                oCols.push({
+                    label: 'Cantidad',
+                    property: 'MENGE',
+                    type: 'string'
+                }); 
+                oCols.push({
+                    label: 'Lote',
+                    property: 'WERKS',
+                    type: 'string'
+                });  
+                return oCols;
+            },
         });
     });

@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="selectDialog"
+		title="Lista de Palets"
+		items="{/listaPalets}"
+		search=".onValueHelpSearch"
+		confirm=".onValueHelpClose"
+		cancel=".onValueHelpClose"> 
+		<StandardListItem
+			icon="sap-icon://accounting-document-verification"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{LGORT}"
+			description="{LGOBE} - {WERKS}" />
+	</SelectDialog>
+</core:FragmentDefinition>

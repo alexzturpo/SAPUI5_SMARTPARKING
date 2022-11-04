@@ -3,12 +3,13 @@ sap.ui.define([
     "sap/ui/core/Fragment", 
     "sap/ui/core/BusyIndicator", 
     "sap/ui/model/json/JSONModel",
-    'sap/m/MessageToast'
+    'sap/m/MessageToast',
+    "sap/ui/export/Spreadsheet"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, Fragment, BusyIndicator,JSONModel,MessageToast) {
+    function (Controller, Fragment, BusyIndicator,JSONModel,MessageToast,Spreadsheet) {
         "use strict";
 
         return Controller.extend("sp.smartpacking.controller.vAplicarCotizacion", {
@@ -74,6 +75,7 @@ sap.ui.define([
             }, 
             _data_volcado: function (v_fecha,v_centro_principal,v_almacen) { 
                 console.log("FUNCION _data_volcado"); 
+                // let url = `https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/BV/20221014/1101/0040/0`; 
                 let url = `https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/BV/${v_fecha}/${v_centro_principal}/${v_almacen}/0`; 
                 console.log("_data_volcado URL",url); 
 
@@ -188,7 +190,7 @@ sap.ui.define([
                 }
                 console.log(obj);
 
-
+                // https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/BSTE/20221023/1102/0034/0
                 let url = `https://dsap.lacalera.com.pe/sap/bc/zsagw_smart/Smart/BSTE/${v_fecha}/${v_cp}/${v_almacen}/0`;
                 console.log("URL GET BUSCAR", url);
                 BusyIndicator.show(0);
@@ -217,6 +219,82 @@ sap.ui.define([
                         console.log(XMLHttpRequest);
                     }
                 });
+            },
+            // descargar datos de la tabla  
+            onDownloadTable: function () {
+                console.log("onDownloadTable");
+                var oCols, OTablaDowload, oSettings, oSheet;
+                var nombreArchivo = new Date().toLocaleString("es-ES");  
+                
+                oCols = this.createColumnConfig(); 
+                OTablaDowload = this.getView().byId("table01comparar_Cotizacion").getModel("Model_Table_Registro_Cotizacion").getData(); 
+                console.log("OTablaDowload 2",OTablaDowload.value);  
+    
+                oSettings = {
+                    workbook: {
+                        columns: oCols
+                    },
+                    dataSource: OTablaDowload.value,
+                    fileName: `Activos ${nombreArchivo}`
+                };
+    
+                oSheet = new Spreadsheet(oSettings);
+                oSheet.build()
+                    .then(function () {
+                        this.getView().setBusy(false);
+                        sap.m.MessageToast.show("Se realizó la exportación con éxito.");
+                    }.bind(this))
+                    .finally(function () {
+                        this.getView().setBusy(false);
+                        oSheet.destroy();
+                    }.bind(this));
+            },
+    
+            createColumnConfig: function () { 
+                var oCols = [];
+    
+                oCols.push({
+                    label: 'PRODUCTO INTERMEDIO',
+                    property: 'MATNR',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'LOTE',
+                    property: 'ZCOD_VOL',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'BATCH',
+                    property: 'WERKS',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'AUTOCLAVE',
+                    property: 'WERKS',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'TURNO',
+                    property: 'WERKS',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'HORA',
+                    property: 'WERKS',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'PALLET',
+                    property: 'WERKS',
+                    type: 'string'
+                });
+                oCols.push({
+                    label: 'ETIQUETA',
+                    property: 'WERKS',
+                    type: 'string'
+                });
+    
+                return oCols;
             },
     });
 });

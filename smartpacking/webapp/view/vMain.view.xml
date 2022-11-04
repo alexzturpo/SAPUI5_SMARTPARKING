@@ -146,7 +146,7 @@
 											<VBox class="sapUiSmallMargin">
                                                 <tab:Table id="table_volcados_generados"
                                                     showNoData="true"
-                                                    selectionMode="Single"
+                                                    selectionMode="None"
                                                     selectionBehavior="RowOnly"
                                                     visibleRowCount="15"
                                                     enableSelectAll="false" 
@@ -157,7 +157,8 @@
                                                         <OverflowToolbar id="vmainId006" style="Clear">
                                                             <ToolbarSpacer/>
                                                             <Button id="btn_visualizar_tablas_volcados_generados" icon="sap-icon://action-settings" tooltip="Visualizar tablas" /> 
-                                                            <Button id="btn_descargar_excel_volcados_generados" icon="sap-icon://excel-attachment" tooltip="Descarga en excel" /> 
+                                                            <!-- <Button id="btn_descargar_excel_volcados_generados" icon="sap-icon://excel-attachment" tooltip="Descarga en excel" />  -->
+                                                            <Button icon="sap-icon://download" text="Descargar tabla" press="onDownloadTable"/>  
                                                         </OverflowToolbar>
                                                     </tab:extension>
                                                     <tab:columns>
@@ -212,7 +213,8 @@
                                                     <OverflowToolbar id="vmainId0061" style="Clear">
                                                         <ToolbarSpacer id="vmainId0071" />
                                                         <Button id="vmainId00111" icon="sap-icon://action-settings" tooltip="Visualizar tablas" press="AddFilterPress"/> 
-                                                        <Button id="vmainId00121" icon="sap-icon://excel-attachment" tooltip="Descarga en excel" press="excelDownload"/> 
+                                                        <!-- <Button id="vmainId00121" icon="sap-icon://excel-attachment" tooltip="Descarga en excel" press="excelDownload"/>  -->
+                                                        <Button icon="sap-icon://download" text="Descargar tabla" press="onDownloadTable"/>  
                                                     </OverflowToolbar>
                                                 </tab:extension>
                                                 <tab:columns>

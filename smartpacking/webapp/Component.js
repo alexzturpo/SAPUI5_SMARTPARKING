@@ -211,7 +211,15 @@ sap.ui.define([
                             "label": "Procesamiento de pedidos de compra",
                             "position": 2
                         }
-                    ]
+                    ],
+                    "pruebaData":[
+                        {"palet":"palet 1"},
+                        {"palet":"palet 2"},
+                        {"palet":"palet 3"},
+                        {"palet":"palet 4"},
+                        {"palet":"palet 5"}
+                    ],
+                    "dataPalet":[]
                         
                         
                 };

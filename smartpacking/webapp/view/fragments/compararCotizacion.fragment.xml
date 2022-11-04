@@ -12,11 +12,10 @@
       id="d2CompararID" contentWidth="60rem"
       title="Registro de Productos Calibrados" draggable="true" showHeader="true">   
     <VBox class="sapUiSmallMargin">
-            <f:Form id="FormChange480_12120Dual"
-                editable="true">
-                <f:title>
+            <f:Form id="FormChange480_12120Dual"  editable="true">
+                <!-- <f:title>
                     <core:Title text="Nuevo Registro" />
-                </f:title>
+                </f:title> -->
                 <f:layout>
                     <f:ResponsiveGridLayout
                         labelSpanXL="6"
@@ -28,9 +27,9 @@
                         emptySpanL="0"
                         emptySpanM="0"
                         emptySpanS="0"
-                        columnsXL="3"
-                        columnsL="3"
-                        columnsM="3"
+                        columnsXL="2"
+                        columnsL="2"
+                        columnsM="2"
                         singleContainerFullSize="false" />
                 </f:layout>
                 <f:formContainers>
@@ -41,73 +40,83 @@
                                     <DatePicker id="picker2" placeholder="Ingrese" change="handleChange" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy"/>
                                 </f:fields>
                             </f:FormElement>
-                        </f:formElements>
-                    </f:FormContainer>
-                    <f:FormContainer>
-                        <f:formElements>
                             <f:FormElement label="PEDIDO">
                                 <f:fields>
                                     <ComboBox id="idMaterial" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
-                            <core:Item id="itemMaterial" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
-                        </ComboBox>
+                                        <core:Item id="itemMaterial" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                                    </ComboBox>
                                 </f:fields>
                             </f:FormElement>
-                        </f:formElements>
-                    </f:FormContainer>
-                    <f:FormContainer>
-                        <f:formElements>
                             <f:FormElement label="LOTE PRD.">
                                 <f:fields>
                                     <ComboBox id="idLotePRD" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
-                            <core:Item id="itemLotePRD" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
-                        </ComboBox>
+                                        <core:Item id="itemLotePRD" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                                    </ComboBox>
                                 </f:fields>
                             </f:FormElement>
-                        </f:formElements>
-                    </f:FormContainer>
-                    <f:FormContainer>
-                        <f:formElements>
                             <f:FormElement label="RESPONSABLE">
                                 <f:fields>
                                     <Input value="" id="responsable"/>
                                 </f:fields>
                             </f:FormElement>
-                        </f:formElements>
-                    </f:FormContainer>
-                    <f:FormContainer>
-                        <f:formElements>
                             <f:FormElement label="CLIENTE">
                                 <f:fields>
                                     <Input value="" id="cliente"/>
                                 </f:fields>
                             </f:FormElement>
-                        </f:formElements>
-                    </f:FormContainer>
-                    <f:FormContainer>
-                        <f:formElements>
                             <f:FormElement label="TURNO">
                                 <f:fields>
                                     <Input value="" id="turno"/>
                                 </f:fields>
                             </f:FormElement>
-                        </f:formElements>
-                    </f:FormContainer>
-                    <f:FormContainer>
-                        <f:formElements>
                             <f:FormElement label="ETIQUETA">
                                 <f:fields>
                                     <ComboBox id="idEtiqueta" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
-                            <core:Item id="itemEtiqueta" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
-                        </ComboBox>
+                                        <core:Item id="itemEtiqueta" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                                    </ComboBox>
                                 </f:fields>
                             </f:FormElement>
-                        </f:formElements>
-                    </f:FormContainer>
-                    <f:FormContainer>
-                        <f:formElements>
                             <f:FormElement label="Total de Cajas">
                                 <f:fields>
                                     <Input value="" id="total"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>  
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Palet">
+                                <f:fields> 
+                                    <Input id="productInput"  placeholder="Enter product" showSuggestion="true" 
+                                        showValueHelp="true" valueHelpRequest=".onF4PaletNotificacionMP"/> 
+                                    <Button text="Añadir palet" press="onAgregarPalet"/>
+                                    <!-- probando con un tabla -->
+                                    <!-- <Input id="productInput" type="Text"  placeholder="Ingresar palet ..." showValueHelp="true" valueHelpOnly="true" valueHelpRequest="onSelectPalet"  /> 
+                                    <Button text="Añadir palet" press="onAgregarPalet"/> -->
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement >
+                                <f:fields> 
+                                    <tab:Table id="tableLotes" showNoData="true" selectionMode="None"  visibleRowCount="6"
+                                        enableSelectAll="false"  rows="{  path: '/dataPalet' }"  ariaLabelledBy="title"  >
+                                        <tab:extension>
+                                            <OverflowToolbar id="tabLotes01" style="Clear"> 
+                                                <ToolbarSpacer />   
+                                                <Title text="Palets añadidos"/> 
+                                                <ToolbarSpacer />   
+                                            </OverflowToolbar>
+                                        </tab:extension>
+                                        <tab:columns>
+                                            <tab:Column id="tabLotes1" sortProperty="material" filterProperty="material" autoResizable="true" width="auto">
+                                                <Label id="tabLotes1l" textAlign="Center" wrapping ="true"  text="Palet" />
+                                                <tab:template>  <Text id="tabLotes1li" text="{LGOBE}" wrapping="false" /> </tab:template>
+                                            </tab:Column>
+                                            <tab:Column id="tabLotes2" sortProperty="articuloRFQ" filterProperty="articuloRFQ" autoResizable="true" width="auto">
+                                                <Label id="tabLotes2l" textAlign="Center" wrapping ="true"  text="Codigo" />
+                                                <tab:template> <Text id="tabLotes2i" text="{LGORT}" wrapping="false" /> </tab:template>
+                                            </tab:Column> 
+                                        </tab:columns>
+                                    </tab:Table> 
                                 </f:fields>
                             </f:FormElement>
                         </f:formElements>

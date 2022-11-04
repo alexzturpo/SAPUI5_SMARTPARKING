@@ -15,15 +15,7 @@
                 <ImageContent src="../img/sap-logo.svg" class="sapUiSmallMarginBottom"/>
 
                 <ImageContent src="../img/smart_packing_logo.png" class="sapUiSmallMarginBottom"/>
-                <ToolbarSpacer /> 
-                <!-- <MenuButton icon="sap-icon://customer" id="menu_but_panel_title" text="Bienvenido" class="texto_blanco opacidad_transparente sapUiSmallMarginEnd">
-                    <layoutData>
-                        <OverflowToolbarLayoutData priority="NeverOverflow" />
-                    </layoutData>
-                    <Menu>
-                        <MenuItem text="Log out" icon="sap-icon://log" press="onPress_logout" />
-                    </Menu>
-                </MenuButton> -->
+                <ToolbarSpacer />  
             </FlexBox>
             
             <FlexBox class="blanco" alignItems="Center" justifyContent="Start">
@@ -50,6 +42,7 @@
                             <Button icon="sap-icon://search" text="Buscar" press="OnBuscarResgistro"/> 
                             <ToolbarSpacer id="tab01Id007" /> 
                             <Button id="tab01Id0011" icon="sap-icon://compare" text="Notificación de Producto MP" press="onCompararC2"/>   
+                            <Button icon="sap-icon://download" text="Descargar tabla" press="onDownloadTable"/>   
                         </OverflowToolbar>
                     </tab:extension>
                     <tab:columns>

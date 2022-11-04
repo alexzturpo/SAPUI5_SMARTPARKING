@@ -50,6 +50,7 @@
                                 <Button icon="sap-icon://search" text="Buscar" press="OnBuscarResgistro"/>     
                                 <ToolbarSpacer id="tab01Id007" /> 
                                 <Button id="tab01Id0011" icon="sap-icon://compare" text="Notificación de Producto Intermedio" press="onCompararC2"/>   
+                                <Button icon="sap-icon://download" text="Descargar tabla" press="onDownloadTable"/>  
                             </OverflowToolbar>
                         </tab:extension>
                         <tab:columns>
